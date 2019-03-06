@@ -68,3 +68,11 @@ const PostFilter = props => (
     </ReferenceInput>
   </Filter>
 );
+
+export const BlogList = props => (
+  <List {...props}>
+    <Datagrid>
+      <TextField source="id" />>
+    </Datagrid>
+  </List>
+);
