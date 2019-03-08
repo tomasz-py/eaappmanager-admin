@@ -4,6 +4,12 @@ import Dashboard from "./Dashboard/Dashboard";
 import UserIcon from "@material-ui/icons/Group";
 import loopbackClient, { authProvider } from "react-admin-loopback";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
+import { ClientsList, ClientsCreate, ClientsEdit } from "./Clients/Clients";
+import {
+  AddressesList,
+  AddressesCreate,
+  AddressesEdit
+} from "./Addresses/Addresses";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -19,6 +25,18 @@ const App = () => (
       icon={UserIcon}
       create={UsersCreate}
       edit={UsersEdit}
+    />
+    <Resource
+      name="clients"
+      list={ClientsList}
+      create={ClientsCreate}
+      edit={ClientsEdit}
+    />
+    <Resource
+      name="addresses"
+      list={AddressesList}
+      create={AddressesCreate}
+      edit={AddressesEdit}
     />
   </Admin>
 );
