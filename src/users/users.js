@@ -1,18 +1,44 @@
 import React from "react";
-import { List, Datagrid, TextField, EmailField } from "react-admin";
-import MyUrlField from "../CustomComponents/MyUrlField/MyUrlField";
+import {
+  List,
+  Datagrid,
+  TextField,
+  Create,
+  TextInput,
+  SimpleForm,
+  EditButton,
+  Edit
+} from "react-admin";
 
-export const UserList = props => (
+export const UsersList = props => (
   <List {...props}>
-    <Datagrid rowClick="edit">
+    <Datagrid>
       <TextField source="id" />
-      <TextField source="name" />
       <TextField source="username" />
-      <EmailField source="email" />
-      <TextField source="address.street" />
-      <TextField source="phone" />
-      <MyUrlField source="website" />
-      <TextField source="company.name" />
+      <TextField source="realm" />
+      <TextField source="email" />
+      <EditButton />
     </Datagrid>
   </List>
+);
+
+export const UsersCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextInput source="username" resettable />
+      <TextInput source="realm" resettable />
+      <TextInput source="email" resettable />
+      <TextInput source="password" type="password" resettable />
+    </SimpleForm>
+  </Create>
+);
+
+export const UsersEdit = props => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="username" resettable />
+      <TextInput source="realm" resettable />
+      <TextInput source="email" resettable />
+    </SimpleForm>
+  </Edit>
 );
