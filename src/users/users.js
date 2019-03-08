@@ -9,6 +9,7 @@ import {
   EditButton,
   Edit
 } from "react-admin";
+import ConditionalUserEditButton from "./ConditionalUserEditButton/ConditionalUserEditButton";
 
 export const UsersList = props => (
   <List {...props}>
@@ -17,7 +18,7 @@ export const UsersList = props => (
       <TextField source="username" />
       <TextField source="realm" />
       <TextField source="email" />
-      <EditButton />
+      <ConditionalUserEditButton />
     </Datagrid>
   </List>
 );
