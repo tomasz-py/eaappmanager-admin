@@ -9,13 +9,12 @@ import {
   EditButton,
   Edit,
   ReferenceManyField,
-  SingleFieldList,
-  ChipField,
-  TabbedShowLayout,
-  Tab,
   TabbedForm,
-  FormTab
+  FormTab,
+  ShowButton
 } from "react-admin";
+import AddAddressForClient from "./AddAddressForClient/AddAddressForClient";
+import EditAddressForClient from "./EditAddressForClient/EditAddressForClient";
 
 export const ClientsList = props => (
   <List {...props}>
@@ -79,16 +78,17 @@ export const ClientsEdit = props => (
         <TextInput source="description" />
         <TextInput source="website" />
       </FormTab>
-      <FormTab label="Addresses">
+      <FormTab label="Addresses" path="addresses">
         <ReferenceManyField reference="addresses" target="clientId">
           <Datagrid>
             <TextField source="addressLine1" />
             <TextField source="city" />
             <TextField source="zipCode" />
             <TextField source="isPrimary" />
-            <EditButton />
+            <EditAddressForClient />
           </Datagrid>
         </ReferenceManyField>
+        <AddAddressForClient />
       </FormTab>
     </TabbedForm>
   </Edit>

@@ -7,11 +7,9 @@ import {
   TextInput,
   SimpleForm,
   EditButton,
-  Edit,
-  ReferenceManyField,
-  SingleFieldList,
-  ChipField
+  Edit
 } from "react-admin";
+import { parse } from "query-string";
 
 export const AddressesList = props => (
   <List {...props}>
@@ -26,24 +24,35 @@ export const AddressesList = props => (
   </List>
 );
 
-export const AddressesCreate = props => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput source="addressLine1" />
-      <TextInput source="city" />
-      <TextInput source="zipCode" />
-      <TextInput source="isPrimary" />
-    </SimpleForm>
-  </Create>
-);
+export const AddressesCreate = props => {
+  const { clientId: clientId_string } = parse(props.location.search);
+  const clientId = clientId_string ? parseInt(clientId_string, 10) : "";
+  const redirect = clientId ? `/clients/${clientId}/addresses` : "/addresses/";
 
-export const AddressesEdit = props => (
-  <Edit {...props}>
-    <SimpleForm>
-      <TextInput source="addressLine1" />
-      <TextInput source="city" />
-      <TextInput source="zipCode" />
-      <TextInput source="isPrimary" />
-    </SimpleForm>
-  </Edit>
-);
+  return (
+    <Create {...props}>
+      <SimpleForm redirect={redirect}>
+        <TextInput source="addressLine1" />
+        <TextInput source="city" />
+        <TextInput source="zipCode" />
+        <TextInput source="isPrimary" />
+      </SimpleForm>
+    </Create>
+  );
+};
+
+export const AddressesEdit = props => {
+  const { clientId: clientId_string } = parse(props.location.search);
+  const clientId = clientId_string ? parseInt(clientId_string, 10) : "";
+  const redirect = clientId ? `/clients/${clientId}/addresses` : "/addresses/";
+  return (
+    <Edit {...props}>
+      <SimpleForm redirect={redirect}>
+        <TextInput source="addressLine1" />
+        <TextInput source="city" />
+        <TextInput source="zipCode" />
+        <TextInput source="isPrimary" />
+      </SimpleForm>
+    </Edit>
+  );
+};
