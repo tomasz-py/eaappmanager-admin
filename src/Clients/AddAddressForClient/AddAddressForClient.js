@@ -1,8 +1,8 @@
 import React from "react";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import { Button } from "react-admin";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import { Add } from "@material-ui/icons";
 
 const styles = {
   button: {
@@ -17,7 +17,9 @@ const AddAddressForClient = ({ classes, record }) => (
     to={`/addresses/create?clientId=${record.id}`}
     title="Add address"
     label="Add address"
-  />
+  >
+    <Add />
+  </Button>
 );
 
 export default withStyles(styles)(AddAddressForClient);

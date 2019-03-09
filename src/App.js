@@ -34,7 +34,7 @@ const App = () => (
     />
     <Resource
       name="addresses"
-      list={AddressesList}
+      // list={AddressesList}
       create={AddressesCreate}
       edit={AddressesEdit}
     />

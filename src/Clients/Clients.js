@@ -38,11 +38,11 @@ export const ClientsList = props => (
   </List>
 );
 
-const redirectOnClientCreate = () => `/clients/`;
+//const redirectOnClientCreate = () => `/clients/`;
 
 export const ClientsCreate = props => (
   <Create {...props}>
-    <SimpleForm redirect={redirectOnClientCreate}>
+    <SimpleForm>
       <TextInput source="name" />
       <TextInput source="description" />
       <TextInput source="website" />
