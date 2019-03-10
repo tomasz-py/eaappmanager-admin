@@ -2,6 +2,8 @@ import React from "react";
 import { Admin, Resource } from "react-admin";
 import Dashboard from "./Dashboard/Dashboard";
 import UserIcon from "@material-ui/icons/Group";
+import FolderSharedIcon from "@material-ui/icons/FolderShared";
+import EventNoteIcon from "@material-ui/icons/EventNote";
 import loopbackClient, { authProvider } from "react-admin-loopback";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
 import { ClientsList, ClientsCreate, ClientsEdit } from "./Clients/Clients";
@@ -15,6 +17,11 @@ import {
   SubscriptionsCreate,
   SubscriptionsEdit
 } from "./Subscriptions/Subscriptions";
+import {
+  ServiceTypesList,
+  ServiceTypesCreate,
+  ServiceTypesEdit
+} from "./ServiceTypes/ServicesTypes";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -36,6 +43,7 @@ const App = () => (
       list={ClientsList}
       create={ClientsCreate}
       edit={ClientsEdit}
+      icon={FolderSharedIcon}
     />
     <Resource
       name="addresses"
@@ -45,9 +53,16 @@ const App = () => (
     />
     <Resource
       name="subscriptions"
-      list={SubscriptionsList}
+      // list={SubscriptionsList}
       create={SubscriptionsCreate}
       edit={SubscriptionsEdit}
+    />
+    <Resource
+      name="servicetypes"
+      list={ServiceTypesList}
+      create={ServiceTypesCreate}
+      edit={ServiceTypesEdit}
+      icon={EventNoteIcon}
     />
   </Admin>
 );
