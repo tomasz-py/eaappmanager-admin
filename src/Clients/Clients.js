@@ -11,7 +11,7 @@ import {
   ReferenceManyField,
   TabbedForm,
   FormTab,
-  ShowButton
+  LongTextInput
 } from "react-admin";
 import AddAddressForClient from "./AddAddressForClient/AddAddressForClient";
 import EditAddressForClient from "./EditAddressForClient/EditAddressForClient";
@@ -70,16 +70,17 @@ export const ClientsCreate = props => (
 //     </SimpleForm>
 //   </Edit>
 // );
+
 export const ClientsEdit = props => (
   <Edit {...props}>
     <TabbedForm>
       <FormTab label="Client">
         <TextInput source="name" />
-        <TextInput source="description" />
+        <LongTextInput source="description" />
         <TextInput source="website" />
       </FormTab>
       <FormTab label="Addresses" path="addresses">
-        <ReferenceManyField reference="addresses" target="clientId">
+        <ReferenceManyField label="" reference="addresses" target="clientId">
           <Datagrid>
             <TextField source="addressLine1" />
             <TextField source="city" />

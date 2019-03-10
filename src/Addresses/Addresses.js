@@ -10,10 +10,10 @@ import {
   Edit,
   DeleteButton,
   SaveButton,
-  BooleanInput
+  BooleanInput,
+  Toolbar
 } from "react-admin";
 import { parse } from "query-string";
-import { CardActions } from "@material-ui/core";
 
 export const AddressesList = props => (
   <List {...props}>
@@ -45,23 +45,22 @@ export const AddressesCreate = props => {
   );
 };
 
-const CustomEditActions = ({ data, resource, redirect }) => {
-  console.log("toja");
-  console.log(data);
+const CustomEditActions = props => {
+  console.log(props);
+  const { record, resource } = props;
+  const redirect = `/clients/${record.clientId}/addresses`;
   return (
-    <CardActions>
-      <DeleteButton record={data} resource={resource} redirect={redirect} />
-    </CardActions>
+    <Toolbar {...props}>
+      <SaveButton redirect={redirect} />
+      <DeleteButton record={record} resource={resource} redirect={redirect} />
+    </Toolbar>
   );
 };
 
 export const AddressesEdit = props => {
-  const { clientId: clientId_string } = parse(props.location.search);
-  const clientId = clientId_string ? parseInt(clientId_string, 10) : "";
-  const redirect = clientId ? `/clients/${clientId}/addresses` : "/addresses/";
   return (
-    <Edit {...props} actions={<CustomEditActions redirect={redirect} />}>
-      <SimpleForm redirect={redirect}>
+    <Edit {...props}>
+      <SimpleForm toolbar={<CustomEditActions />}>
         <TextInput source="addressLine1" />
         <TextInput source="city" />
         <TextInput source="zipCode" />
