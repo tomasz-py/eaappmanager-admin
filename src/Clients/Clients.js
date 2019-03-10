@@ -11,11 +11,19 @@ import {
   ReferenceManyField,
   TabbedForm,
   FormTab,
-  LongTextInput
+  LongTextInput,
+  DateField
 } from "react-admin";
 import AddAddressForClient from "./AddAddressForClient/AddAddressForClient";
 import EditAddressForClient from "./EditAddressForClient/EditAddressForClient";
+import AddSubscriptionForClient from "./AddSubscriptionForClient/AddSubscriptionForClient";
+import EditSubscriptionForClient from "./EditSubscriptionForClient/EditSubscriptionForClient";
 
+const ClientTitle = ({ record }) => {
+  console.log(record);
+  return <span>Edit client: {record ? `${record.name}` : ""}</span>;
+};
+//return <span>Post {record ? `"${record.title}"` : ""}</span>;
 export const ClientsList = props => (
   <List {...props}>
     <Datagrid>
@@ -72,7 +80,7 @@ export const ClientsCreate = props => (
 // );
 
 export const ClientsEdit = props => (
-  <Edit {...props}>
+  <Edit {...props} title={<ClientTitle />}>
     <TabbedForm>
       <FormTab label="Client">
         <TextInput source="name" />
@@ -90,6 +98,20 @@ export const ClientsEdit = props => (
           </Datagrid>
         </ReferenceManyField>
         <AddAddressForClient />
+      </FormTab>
+      <FormTab label="Subscriptions" path="subscriptions">
+        <ReferenceManyField
+          label=""
+          reference="subscriptions"
+          target="clientId"
+        >
+          <Datagrid>
+            <DateField source="startSub" showTime />
+            <DateField source="endSub" showTime />
+            <EditSubscriptionForClient />
+          </Datagrid>
+        </ReferenceManyField>
+        <AddSubscriptionForClient />
       </FormTab>
     </TabbedForm>
   </Edit>

@@ -12,27 +12,29 @@ import {
   SaveButton,
   BooleanInput,
   Toolbar,
-  ReferenceField
+  ReferenceField,
+  DateInput
 } from "react-admin";
 import { parse } from "query-string";
 
-export const AddressesList = props => (
+export const SubscriptionsList = props => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
-      <TextField source="addressLine1" />
-      <TextField source="city" />
-      <TextField source="zipCode" />
-      <TextField source="isPrimary" />
+      <TextField source="clientId" />
+      <TextField source="startSub" />
+      <TextField source="endSub" />
       <EditButton />
     </Datagrid>
   </List>
 );
 
-export const AddressesCreate = props => {
+export const SubscriptionsCreate = props => {
   const { clientId: clientId_string } = parse(props.location.search);
   const clientId = clientId_string ? parseInt(clientId_string, 10) : "";
-  const redirect = clientId ? `/clients/${clientId}/addresses` : "/addresses/";
+  const redirect = clientId
+    ? `/clients/${clientId}/subscriptions`
+    : "/subscriptions/";
 
   return (
     <Create {...props}>
@@ -40,10 +42,8 @@ export const AddressesCreate = props => {
         <ReferenceField label="Client" source="clientId" reference="clients">
           <TextField source="name" />
         </ReferenceField>
-        <TextInput source="addressLine1" />
-        <TextInput source="city" />
-        <TextInput source="zipCode" />
-        <BooleanInput source="isPrimary" />
+        <DateInput source="startSub" />
+        <DateInput source="endSub" />
       </SimpleForm>
     </Create>
   );
@@ -52,7 +52,7 @@ export const AddressesCreate = props => {
 const CustomEditActions = props => {
   console.log(props);
   const { record, resource } = props;
-  const redirect = `/clients/${record.clientId}/addresses`;
+  const redirect = `/clients/${record.clientId}/subscriptions`;
   return (
     <Toolbar {...props}>
       <SaveButton redirect={redirect} />
@@ -61,17 +61,16 @@ const CustomEditActions = props => {
   );
 };
 
-export const AddressesEdit = props => {
+export const SubscriptionsEdit = props => {
   return (
     <Edit {...props}>
       <SimpleForm toolbar={<CustomEditActions />}>
         <ReferenceField label="Client" source="clientId" reference="clients">
           <TextField source="name" />
         </ReferenceField>
-        <TextInput source="addressLine1" />
-        <TextInput source="city" />
-        <TextInput source="zipCode" />
-        <BooleanInput source="isPrimary" />
+
+        <DateInput source="startSub" />
+        <DateInput source="endSub" />
       </SimpleForm>
     </Edit>
   );

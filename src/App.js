@@ -10,6 +10,11 @@ import {
   AddressesCreate,
   AddressesEdit
 } from "./Addresses/Addresses";
+import {
+  SubscriptionsList,
+  SubscriptionsCreate,
+  SubscriptionsEdit
+} from "./Subscriptions/Subscriptions";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -37,6 +42,12 @@ const App = () => (
       // list={AddressesList}
       create={AddressesCreate}
       edit={AddressesEdit}
+    />
+    <Resource
+      name="subscriptions"
+      list={SubscriptionsList}
+      create={SubscriptionsCreate}
+      edit={SubscriptionsEdit}
     />
   </Admin>
 );
