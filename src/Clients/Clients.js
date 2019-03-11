@@ -20,7 +20,6 @@ import AddSubscriptionForClient from "./AddSubscriptionForClient/AddSubscription
 import EditSubscriptionForClient from "./EditSubscriptionForClient/EditSubscriptionForClient";
 
 const ClientTitle = ({ record }) => {
-  console.log(record);
   return <span>Edit client: {record ? `${record.name}` : ""}</span>;
 };
 //return <span>Post {record ? `"${record.title}"` : ""}</span>;
@@ -57,27 +56,6 @@ export const ClientsCreate = props => (
     </SimpleForm>
   </Create>
 );
-
-// export const ClientsCreate = props => (
-//   <Create {...props}>
-//     <SimpleForm>
-//       <TextInput source="name" />
-//       <TextInput source="description" />
-//       <TextInput source="website" />
-//     </SimpleForm>
-//   </Create>
-// );
-
-//Working edit clients:
-// export const ClientsEdit = props => (
-//   <Edit {...props}>
-//     <SimpleForm>
-//       <TextInput source="name" />
-//       <TextInput source="description" />
-//       <TextInput source="website" />
-//     </SimpleForm>
-//   </Edit>
-// );
 
 export const ClientsEdit = props => (
   <Edit {...props} title={<ClientTitle />}>

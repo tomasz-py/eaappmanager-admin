@@ -37,6 +37,7 @@ const App = () => (
       icon={UserIcon}
       create={UsersCreate}
       edit={UsersEdit}
+      options={{ label: "Users" }}
     />
     <Resource
       name="clients"
@@ -44,6 +45,7 @@ const App = () => (
       create={ClientsCreate}
       edit={ClientsEdit}
       icon={FolderSharedIcon}
+      options={{ label: "Clients" }}
     />
     <Resource
       name="addresses"
@@ -63,6 +65,7 @@ const App = () => (
       create={ServiceTypesCreate}
       edit={ServiceTypesEdit}
       icon={EventNoteIcon}
+      options={{ label: "Service dictionary" }}
     />
   </Admin>
 );

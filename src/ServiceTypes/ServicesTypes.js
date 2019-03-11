@@ -11,7 +11,7 @@ import {
 } from "react-admin";
 
 export const ServiceTypesList = props => (
-  <List {...props}>
+  <List {...props} title={<ServiceTypesTitle />}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />
@@ -19,6 +19,10 @@ export const ServiceTypesList = props => (
     </Datagrid>
   </List>
 );
+
+const ServiceTypesTitle = ({ record }) => {
+  return <span>Service dictionary</span>;
+};
 
 export const ServiceTypesCreate = props => (
   <Create {...props}>

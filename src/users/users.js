@@ -12,7 +12,7 @@ import {
 import ConditionalUserEditButton from "./ConditionalUserEditButton/ConditionalUserEditButton";
 
 export const UsersList = props => (
-  <List {...props}>
+  <List {...props} title={<UsersTitle />}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="username" />
@@ -22,6 +22,10 @@ export const UsersList = props => (
     </Datagrid>
   </List>
 );
+
+const UsersTitle = ({ record }) => {
+  return <span>Users</span>;
+};
 
 export const UsersCreate = props => (
   <Create {...props}>
@@ -40,6 +44,7 @@ export const UsersEdit = props => (
       <TextInput source="username" resettable />
       <TextInput source="realm" resettable />
       <TextInput source="email" resettable />
+      <TextInput source="password" type="password" resettable />
     </SimpleForm>
   </Edit>
 );
