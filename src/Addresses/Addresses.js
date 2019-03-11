@@ -23,6 +23,7 @@ export const AddressesList = props => (
       <TextField source="addressLine1" />
       <TextField source="city" />
       <TextField source="zipCode" />
+      <TextField source="country" />
       <TextField source="isPrimary" />
       <EditButton />
     </Datagrid>
@@ -43,6 +44,7 @@ export const AddressesCreate = props => {
         <TextInput source="addressLine1" />
         <TextInput source="city" />
         <TextInput source="zipCode" />
+        <TextInput source="country" />
         <BooleanInput source="isPrimary" />
       </SimpleForm>
     </Create>
@@ -68,9 +70,10 @@ export const AddressesEdit = props => {
         <ReferenceField label="Client" source="clientId" reference="clients">
           <TextField source="name" />
         </ReferenceField>
-        <TextInput source="addressLine1" />
+        <TextInput source="addressLine1" label="Address" />
         <TextInput source="city" />
         <TextInput source="zipCode" />
+        <TextInput source="country" />
         <BooleanInput source="isPrimary" />
       </SimpleForm>
     </Edit>

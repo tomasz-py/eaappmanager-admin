@@ -36,8 +36,7 @@ export const ClientsList = props => (
         label="Adresses"
       >
         <Datagrid>
-          <TextField label="Street" source="addressLine1" />
-          <TextField label="City" source="city" />
+          <TextField source="country" />
         </Datagrid>
       </ReferenceManyField>
       <EditButton />
@@ -68,9 +67,10 @@ export const ClientsEdit = props => (
       <FormTab label="Addresses" path="addresses">
         <ReferenceManyField label="" reference="addresses" target="clientId">
           <Datagrid>
-            <TextField source="addressLine1" />
+            <TextField source="addressLine1" label="Address" />
             <TextField source="city" />
             <TextField source="zipCode" />
+            <TextField source="country" />
             <TextField source="isPrimary" />
             <EditAddressForClient />
           </Datagrid>
