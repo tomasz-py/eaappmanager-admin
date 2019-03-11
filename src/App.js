@@ -22,6 +22,12 @@ import {
   ServiceTypesCreate,
   ServiceTypesEdit
 } from "./ServiceTypes/ServicesTypes";
+import { ServersList, ServersCreate, ServersEdit } from "./Servers/Servers";
+import {
+  ServersDetailsList,
+  ServersDetailsEdit,
+  ServersDetailsCreate
+} from "./Servers/ServersDetails/ServersDetails";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -66,6 +72,20 @@ const App = () => (
       edit={ServiceTypesEdit}
       icon={EventNoteIcon}
       options={{ label: "Service dictionary" }}
+    />
+    <Resource
+      name="servers"
+      list={ServersList}
+      create={ServersCreate}
+      edit={ServersEdit}
+      icon={EventNoteIcon}
+      options={{ label: "Servers" }}
+    />
+    <Resource
+      name="serversdetails"
+      list={ServersDetailsList}
+      create={ServersDetailsCreate}
+      edit={ServersDetailsEdit}
     />
   </Admin>
 );

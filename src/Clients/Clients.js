@@ -12,7 +12,8 @@ import {
   TabbedForm,
   FormTab,
   LongTextInput,
-  DateField
+  DateField,
+  ImageField
 } from "react-admin";
 import AddAddressForClient from "./AddAddressForClient/AddAddressForClient";
 import EditAddressForClient from "./EditAddressForClient/EditAddressForClient";
@@ -28,6 +29,7 @@ export const ClientsList = props => (
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />
+      <ImageField source="logo" title="logo" />
       <TextField source="description" />
       <TextField source="website" />
       <ReferenceManyField
@@ -49,9 +51,10 @@ export const ClientsList = props => (
 export const ClientsCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="name" />
-      <TextInput source="description" />
-      <TextInput source="website" />
+      <LongTextInput source="name" />
+      <LongTextInput source="description" />
+      <LongTextInput source="website" />
+      <LongTextInput source="logo" label="Logo URL" />
     </SimpleForm>
   </Create>
 );
@@ -60,9 +63,10 @@ export const ClientsEdit = props => (
   <Edit {...props} title={<ClientTitle />}>
     <TabbedForm>
       <FormTab label="Client">
-        <TextInput source="name" />
+        <LongTextInput source="name" />
         <LongTextInput source="description" />
-        <TextInput source="website" />
+        <LongTextInput source="website" />
+        <LongTextInput source="logo" label="Logo URL" />
       </FormTab>
       <FormTab label="Addresses" path="addresses">
         <ReferenceManyField label="" reference="addresses" target="clientId">
@@ -84,8 +88,8 @@ export const ClientsEdit = props => (
           target="clientId"
         >
           <Datagrid>
-            <DateField source="startSub" showTime />
-            <DateField source="endSub" showTime />
+            <DateField source="startSub" />
+            <DateField source="endSub" />
             <EditSubscriptionForClient />
           </Datagrid>
         </ReferenceManyField>

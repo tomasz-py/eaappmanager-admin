@@ -52,7 +52,6 @@ export const AddressesCreate = props => {
 };
 
 const CustomEditActions = props => {
-  console.log(props);
   const { record, resource } = props;
   const redirect = `/clients/${record.clientId}/addresses`;
   return (
