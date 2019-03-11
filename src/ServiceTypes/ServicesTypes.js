@@ -20,7 +20,7 @@ export const ServiceTypesList = props => (
   </List>
 );
 
-const ServiceTypesTitle = ({ record }) => {
+const ServiceTypesTitle = () => {
   return <span>Service dictionary</span>;
 };
 

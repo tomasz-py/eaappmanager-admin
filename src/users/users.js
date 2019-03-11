@@ -23,7 +23,7 @@ export const UsersList = props => (
   </List>
 );
 
-const UsersTitle = ({ record }) => {
+const UsersTitle = () => {
   return <span>Users</span>;
 };
 
