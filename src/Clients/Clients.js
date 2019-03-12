@@ -15,10 +15,10 @@ import {
   DateField,
   ImageField
 } from "react-admin";
-import AddAddressForClient from "./AddAddressForClient/AddAddressForClient";
-import EditAddressForClient from "./EditAddressForClient/EditAddressForClient";
-import AddSubscriptionForClient from "./AddSubscriptionForClient/AddSubscriptionForClient";
-import EditSubscriptionForClient from "./EditSubscriptionForClient/EditSubscriptionForClient";
+import AddAddressForClient from "./AddAddress";
+import EditAddressForClient from "./EditAddress";
+import AddSubscriptionForClient from "./AddSubscription";
+import EditSubscriptionForClient from "./EditSubscription";
 
 const ClientTitle = ({ record }) => {
   return <span>Edit client: {record ? `${record.name}` : ""}</span>;
