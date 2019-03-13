@@ -3,7 +3,9 @@ import { Admin, Resource } from "react-admin";
 import Dashboard from "./Dashboard/Dashboard";
 import UserIcon from "@material-ui/icons/Group";
 import FolderSharedIcon from "@material-ui/icons/FolderShared";
-import EventNoteIcon from "@material-ui/icons/EventNote";
+import StorageIcon from "@material-ui/icons/Storage";
+import SettingsIcon from "@material-ui/icons/Settings";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import loopbackClient, { authProvider } from "react-admin-loopback";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
 import { ClientsList, ClientsCreate, ClientsEdit } from "./Clients/Clients";
@@ -22,7 +24,12 @@ import {
   ServiceTypesCreate,
   ServiceTypesEdit
 } from "./ServiceTypes/ServicesTypes";
-import { ServersList, ServersCreate, ServersEdit } from "./Servers/Servers";
+import {
+  ServersList,
+  ServersCreate,
+  ServersEdit,
+  ServersShow
+} from "./Servers/Servers";
 import {
   ServersDetailsList,
   ServersDetailsEdit,
@@ -80,7 +87,8 @@ const App = () => (
       list={ServersList}
       create={ServersCreate}
       edit={ServersEdit}
-      icon={EventNoteIcon}
+      show={ServersShow}
+      icon={StorageIcon}
       options={{ label: "Servers" }}
     />
     <Resource
@@ -88,13 +96,14 @@ const App = () => (
       list={ServicesList}
       create={ServicesCreate}
       edit={ServicesEdit}
+      icon={SettingsIcon}
     />
     <Resource
       name="servicetypes"
       list={ServiceTypesList}
       create={ServiceTypesCreate}
       edit={ServiceTypesEdit}
-      icon={EventNoteIcon}
+      icon={FormatListBulletedIcon}
       options={{ label: "Services dictionary" }}
     />
     <Resource
@@ -108,6 +117,7 @@ const App = () => (
       list={StatusesList}
       create={StatusesCreate}
       edit={StatusesEdit}
+      icon={FolderSharedIcon}
       options={{ label: "Statuses dictionary" }}
     />
   </Admin>

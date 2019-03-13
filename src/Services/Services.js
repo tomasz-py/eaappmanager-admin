@@ -21,6 +21,9 @@ export const ServicesList = props => (
       <ReferenceField label="Server" source="serverId" reference="servers">
         <TextField source="name" />
       </ReferenceField>
+      <ReferenceField label="IP" source="serverId" reference="servers">
+        <TextField source="ip" />
+      </ReferenceField>
       <ReferenceField
         label="Service type"
         source="serviceTypeId"

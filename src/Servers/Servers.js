@@ -12,7 +12,9 @@ import {
   TabbedForm,
   FormTab,
   ReferenceManyField,
-  SaveButton
+  Show,
+  ShowButton,
+  ReferenceField
 } from "react-admin";
 import AddServerDetails from "./ServersDetails/AddSD";
 import EditServerDetails from "./ServersDetails/EditSD.js";
@@ -25,6 +27,7 @@ export const ServersList = props => (
       <TextField source="host" />
       <TextField source="ip" />
       <TextField source="description" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>
@@ -62,6 +65,62 @@ export const ServersEdit = props => {
             target="serverId"
           >
             <Datagrid>
+              <TextField source="companyName" label="Company" />
+              <TextField source="country" />
+              <TextField source="region" />
+              <EditServerDetails />
+            </Datagrid>
+          </ReferenceManyField>
+          <AddServerDetails />
+        </FormTab>
+        <FormTab label="Services" path="services">
+          <ReferenceManyField label="" reference="services" target="serverId">
+            <Datagrid>
+              <TextField source="id" />
+              <ReferenceField
+                label="Service type"
+                source="serviceTypeId"
+                reference="servicetypes"
+                linkType={false}
+              >
+                <TextField source="name" />
+              </ReferenceField>
+              <ReferenceField
+                label="Status"
+                source="statusId"
+                reference="statuses"
+                linkType={false}
+              >
+                <TextField source="name" />
+              </ReferenceField>
+              <TextField source="port" />
+              <TextField source="description" />
+              <EditButton />
+            </Datagrid>
+          </ReferenceManyField>
+        </FormTab>
+      </TabbedForm>
+    </Edit>
+  );
+};
+
+export const ServersShow = props => {
+  return (
+    <Show {...props}>
+      <TabbedForm>
+        <FormTab label="Server">
+          <TextField source="name" resettable />
+          <TextField source="host" resettable />
+          <TextField source="ip" resettable />
+          <TextField source="description" resettable />
+        </FormTab>
+        <FormTab label="Details" path="serversdetails">
+          <ReferenceManyField
+            label=""
+            reference="serversdetails"
+            target="serverId"
+          >
+            <Datagrid>
               <TextField source="companyname" label="Company" />
               <TextField source="country" />
               <TextField source="region" />
@@ -70,7 +129,33 @@ export const ServersEdit = props => {
           </ReferenceManyField>
           <AddServerDetails />
         </FormTab>
+        <FormTab label="Services" path="services">
+          <ReferenceManyField label="" reference="services" target="serverId">
+            <Datagrid>
+              <TextField source="id" />
+              <ReferenceField
+                label="Service type"
+                source="serviceTypeId"
+                reference="servicetypes"
+                linkType={false}
+              >
+                <TextField source="name" />
+              </ReferenceField>
+              <ReferenceField
+                label="Status"
+                source="statusId"
+                reference="statuses"
+                linkType={false}
+              >
+                <TextField source="name" />
+              </ReferenceField>
+              <TextField source="port" />
+              <TextField source="description" />
+              <EditButton />
+            </Datagrid>
+          </ReferenceManyField>
+        </FormTab>
       </TabbedForm>
-    </Edit>
+    </Show>
   );
 };
