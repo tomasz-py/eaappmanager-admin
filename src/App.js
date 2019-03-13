@@ -28,6 +28,11 @@ import {
   ServersDetailsEdit,
   ServersDetailsCreate
 } from "./Servers/ServersDetails/ServersDetails";
+import {
+  StatusesList,
+  StatusesCreate,
+  StatusesEdit
+} from "./Statuses/Statuses";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -86,6 +91,12 @@ const App = () => (
       list={ServersDetailsList}
       create={ServersDetailsCreate}
       edit={ServersDetailsEdit}
+    />
+    <Resource
+      name="statuses"
+      list={StatusesList}
+      create={StatusesCreate}
+      edit={StatusesEdit}
     />
   </Admin>
 );
