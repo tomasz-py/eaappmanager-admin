@@ -45,6 +45,11 @@ import {
   ServicesEdit,
   ServicesCreate
 } from "./Services/Services";
+import {
+  InstancesList,
+  InstancesCreate,
+  InstancesEdit
+} from "./Instances/Instances";
 
 const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -117,8 +122,14 @@ const App = () => (
       list={StatusesList}
       create={StatusesCreate}
       edit={StatusesEdit}
-      icon={FolderSharedIcon}
+      icon={FormatListBulletedIcon}
       options={{ label: "Statuses dictionary" }}
+    />
+    <Resource
+      name="instances"
+      list={InstancesList}
+      create={InstancesCreate}
+      edit={InstancesEdit}
     />
   </Admin>
 );
