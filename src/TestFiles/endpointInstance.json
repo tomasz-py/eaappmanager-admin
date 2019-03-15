@@ -1,0 +1,21 @@
+{
+  "where": { "id": 1 },
+  "include": [
+    {
+      "relation": "service",
+      "scope": {
+        "include": [
+          { "relation": "server" },
+          { "relation": "servicetype" },
+          { "relation": "status" }
+        ]
+      }
+    },
+    {
+      "relation": "client"
+    },
+    {
+      "relation": "status"
+    }
+  ]
+}

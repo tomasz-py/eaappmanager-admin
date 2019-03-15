@@ -1,0 +1,21 @@
+{
+  "where": { "instanceId": "1" },
+  "include": [
+    {
+      "relation": "service",
+      "scope": {
+        "include": [
+          { "relation": "server" },
+          { "relation": "servicetype" },
+          { "relation": "status" }
+        ]
+      }
+    },
+    {
+      "relation": "instance",
+      "scope": {
+        "include": [{ "relation": "client" }, { "relation": "status" }]
+      }
+    }
+  ]
+}

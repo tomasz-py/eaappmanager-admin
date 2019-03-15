@@ -7,15 +7,23 @@ import {
   EditButton,
   Edit,
   SimpleForm,
-  DisabledInput,
+  TabbedForm,
   ReferenceInput,
   SelectInput,
   TextInput,
   LongTextInput,
   Create,
   DateInput,
-  DateField
+  DateField,
+  ShowButton,
+  Show,
+  SimpleShowLayout,
+  FormTab,
+  ReferenceManyField,
+  ReferenceArrayField,
+  ChipField
 } from "react-admin";
+import InstanceServices from "./InstanceServices/InstanceServices";
 
 export const InstancesList = props => (
   <List {...props}>
@@ -27,6 +35,7 @@ export const InstancesList = props => (
       <TextField source="name" label="Instance name" />
       <TextField source="description" />
       <DateField source="expirationDate" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>
@@ -63,3 +72,60 @@ export const InstancesCreate = props => (
     </SimpleForm>
   </Create>
 );
+
+// export const InstancesShow = props => (
+//   <Show {...props}>
+//     <TabbedForm>
+//       <FormTab label="Instance">
+//         <SimpleShowLayout>
+//           <ReferenceField source="clientId" reference="clients">
+//             <TextField source="name" />
+//           </ReferenceField>
+//           <TextField source="name" />
+//           <TextField source="description" />
+//           <DateField source="expirationDate" />
+
+//           <ReferenceField source="statusId" reference="statuses">
+//             <TextField source="name" />
+//           </ReferenceField>
+//         </SimpleShowLayout>
+//       </FormTab>
+//       <FormTab label="Services" path="instanceservices">
+//         <ReferenceField
+//           source="id"
+//           target="instanceId"
+//           reference="instanceservices"
+//           label="Test"
+//         >
+//           <TextField source="serviceId" />
+//         </ReferenceField>
+//       </FormTab>
+//     </TabbedForm>
+//   </Show>
+// );
+
+export const InstancesShow = props => {
+  return (
+    <Show {...props}>
+      <TabbedForm>
+        <FormTab label="Instance">
+          <SimpleShowLayout>
+            <ReferenceField source="clientId" reference="clients">
+              <TextField source="name" />
+            </ReferenceField>
+            <TextField source="name" />
+            <TextField source="description" />
+            <DateField source="expirationDate" />
+
+            <ReferenceField source="statusId" reference="statuses">
+              <TextField source="name" />
+            </ReferenceField>
+          </SimpleShowLayout>
+        </FormTab>
+        <FormTab label="Services" path="instanceservices">
+          <InstanceServices {...props} />
+        </FormTab>
+      </TabbedForm>
+    </Show>
+  );
+};

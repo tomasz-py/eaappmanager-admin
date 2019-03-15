@@ -57,7 +57,7 @@ export const ServicesCreate = props => (
         <SelectInput optionText="name" />
       </ReferenceInput>
       <TextInput source="description" resettable />
-      <NumberInput source="port" resettable />
+      <NumberInput source="port" />
 
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
@@ -81,7 +81,7 @@ export const ServicesEdit = props => (
         <SelectInput optionText="name" />
       </ReferenceInput>
       <TextInput source="description" resettable />
-      <NumberInput source="port" resettable />
+      <NumberInput source="port" />
 
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
