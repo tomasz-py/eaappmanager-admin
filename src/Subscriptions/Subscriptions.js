@@ -4,13 +4,11 @@ import {
   Datagrid,
   TextField,
   Create,
-  TextInput,
   SimpleForm,
   EditButton,
   Edit,
   DeleteButton,
   SaveButton,
-  BooleanInput,
   Toolbar,
   ReferenceField,
   DateInput

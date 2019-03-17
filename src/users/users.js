@@ -6,7 +6,6 @@ import {
   Create,
   TextInput,
   SimpleForm,
-  EditButton,
   Edit
 } from "react-admin";
 import ConditionalUserEditButton from "./ConditionalUserEditButton/ConditionalUserEditButton";

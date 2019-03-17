@@ -18,10 +18,7 @@ import {
   ShowButton,
   Show,
   SimpleShowLayout,
-  FormTab,
-  ReferenceManyField,
-  ReferenceArrayField,
-  ChipField
+  FormTab
 } from "react-admin";
 import InstanceServices from "./InstanceServices/InstanceServices";
 

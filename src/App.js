@@ -9,13 +9,8 @@ import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import loopbackClient, { authProvider } from "react-admin-loopback";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
 import { ClientsList, ClientsCreate, ClientsEdit } from "./Clients/Clients";
+import { AddressesCreate, AddressesEdit } from "./Addresses/Addresses";
 import {
-  AddressesList,
-  AddressesCreate,
-  AddressesEdit
-} from "./Addresses/Addresses";
-import {
-  SubscriptionsList,
   SubscriptionsCreate,
   SubscriptionsEdit
 } from "./Subscriptions/Subscriptions";
@@ -31,7 +26,6 @@ import {
   ServersShow
 } from "./Servers/Servers";
 import {
-  ServersDetailsList,
   ServersDetailsEdit,
   ServersDetailsCreate
 } from "./Servers/ServersDetails/ServersDetails";

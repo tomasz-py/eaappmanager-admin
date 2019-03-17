@@ -10,7 +10,6 @@ import {
   Edit,
   ReferenceInput,
   SelectInput,
-  BooleanInput,
   NumberInput,
   ReferenceField
 } from "react-admin";
