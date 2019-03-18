@@ -260,7 +260,6 @@ class EnhancedTable extends React.Component {
     }
 
     this.setState({ selected: newSelected });
-    console.log(this.state.selected);
   };
 
   handleChangePage = (event, page) => {
@@ -325,7 +324,6 @@ class EnhancedTable extends React.Component {
                 <TableCell colSpan={6} />
               </TableRow>
             )}
-            <AssignServiceButton id={this.props.services.data[0].id} />
           </TableBody>
         </Table>
         <TablePagination

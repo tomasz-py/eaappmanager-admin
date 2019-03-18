@@ -17,7 +17,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
-import AssignServiceButton from "./AssignServiceButton";
+import AssignButton from "./AssignButton";
+import { Link } from "react-router-dom";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -60,7 +61,8 @@ const rows = [
     disablePadding: false,
     label: "Description"
   },
-  { id: "statusId", numeric: false, disablePadding: false, label: "Status" }
+  { id: "statusId", numeric: false, disablePadding: false, label: "Status" },
+  { id: "assign", numeric: false, disablePadding: false, label: "" }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -260,7 +262,6 @@ class EnhancedTable extends React.Component {
     }
 
     this.setState({ selected: newSelected });
-    console.log(this.state.selected);
   };
 
   handleChangePage = (event, page) => {
@@ -317,6 +318,12 @@ class EnhancedTable extends React.Component {
                     <TableCell align="right">{n.port}</TableCell>
                     <TableCell align="right">{n.description}</TableCell>
                     <TableCell align="right">{n.status.name}</TableCell>
+                    <TableCell align="right">
+                      <AssignButton
+                        search={this.props.search}
+                        serviceId={n.id}
+                      />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -325,7 +332,6 @@ class EnhancedTable extends React.Component {
                 <TableCell colSpan={6} />
               </TableRow>
             )}
-            <AssignServiceButton id={this.props.services.data[0].id} />
           </TableBody>
         </Table>
         <TablePagination

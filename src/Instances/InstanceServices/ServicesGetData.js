@@ -3,7 +3,7 @@ import { GET_LIST } from "react-admin";
 import { dataProvider } from "../../App";
 import ServicesTable from "./ServicesTable";
 
-const ServicesGetData = () => {
+const ServicesGetData = props => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -28,8 +28,7 @@ const ServicesGetData = () => {
   };
 
   if (services.length !== 0) {
-    console.log(services);
-    return <ServicesTable services={services} />;
+    return <ServicesTable services={services} search={props.search} />;
   } else {
     return <div />;
   }

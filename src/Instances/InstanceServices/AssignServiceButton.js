@@ -14,7 +14,6 @@ const AssignServiceButton = ({ classes, id }) => (
   <Button
     className={classes.button}
     component={Link}
-    //to={`/addresses/create?clientId=${record.id}`}
     to={`/instanceservices/create?instanceId=${id}`}
     title="Assign service"
     label="Assign service"

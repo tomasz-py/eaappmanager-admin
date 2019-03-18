@@ -11,6 +11,7 @@ import {
   TextInput
 } from "react-admin";
 import ServicesGetData from "./ServicesGetData";
+import { Link } from "react-router-dom";
 
 export const InstanceserviceList = props => (
   <List {...props}>
@@ -26,4 +27,6 @@ export const InstanceserviceList = props => (
   </List>
 );
 
-export const InstanceserviceCreate = props => <ServicesGetData />;
+export const InstanceserviceCreate = props => {
+  return <ServicesGetData search={props.location.search} />;
+};

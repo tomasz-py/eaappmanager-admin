@@ -21,6 +21,7 @@ import {
   FormTab
 } from "react-admin";
 import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";
+import AssignServiceButton from "./InstanceServices/AssignServiceButton";
 
 export const InstancesList = props => (
   <List {...props}>
@@ -90,6 +91,7 @@ export const InstancesShow = props => {
         </FormTab>
         <FormTab label="Services" path="instanceservices">
           <InstanceServicesGetData {...props} />
+          <AssignServiceButton {...props} />
         </FormTab>
       </TabbedForm>
     </Show>
