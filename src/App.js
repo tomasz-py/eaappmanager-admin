@@ -1,5 +1,5 @@
 import React from "react";
-import { Admin, Resource, ListGuesser } from "react-admin";
+import { Admin, Resource } from "react-admin";
 import Dashboard from "./Dashboard/Dashboard";
 import UserIcon from "@material-ui/icons/Group";
 import FolderSharedIcon from "@material-ui/icons/FolderShared";
@@ -45,6 +45,10 @@ import {
   InstancesEdit,
   InstancesShow
 } from "./Instances/Instances";
+import {
+  InstanceserviceList,
+  InstanceserviceCreate
+} from "./Instances/InstanceServices/InstanceServices";
 
 export const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -127,7 +131,11 @@ const App = () => (
       edit={InstancesEdit}
       show={InstancesShow}
     />
-    <Resource name="instanceservices" list={ListGuesser} />
+    <Resource
+      name="instanceservices"
+      list={InstanceserviceList}
+      create={InstanceserviceCreate}
+    />
   </Admin>
 );
 

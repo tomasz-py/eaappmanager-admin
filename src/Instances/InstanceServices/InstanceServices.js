@@ -1,78 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { GET_LIST, Button } from "react-admin";
-import { dataProvider } from "../../App";
-import InstanceServicesTable from "./InstanceServicesTable";
+import React from "react";
+import {
+  List,
+  Datagrid,
+  TextField,
+  ReferenceField,
+  Create,
+  SimpleForm,
+  ReferenceInput,
+  SelectInput,
+  TextInput
+} from "react-admin";
+import ServicesGetData from "./ServicesGetData";
 
-// const dataProvider = loopbackClient("http://localhost:3000/api/");
+export const InstanceserviceList = props => (
+  <List {...props}>
+    <Datagrid rowClick="edit">
+      <TextField source="id" />
+      <ReferenceField source="serviceId" reference="services">
+        <TextField source="id" />
+      </ReferenceField>
+      <ReferenceField source="instanceId" reference="instances">
+        <TextField source="name" />
+      </ReferenceField>
+    </Datagrid>
+  </List>
+);
 
-const InstanceServices = props => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = () => {
-    dataProvider(GET_LIST, "instances", {
-      filter: { id: props.id },
-      sort: { field: "id", order: "DESC" },
-      pagination: { page: 1, perPage: 10 },
-      include: [
-        {
-          relation: "service",
-          scope: {
-            include: [
-              { relation: "server" },
-              { relation: "servicetype" },
-              { relation: "status" }
-            ]
-          }
-        }
-      ]
-    })
-      .then(response => {
-        setServices(response);
-      })
-      .catch(e => console.log(e));
-  };
-  const checkState = () => {
-    console.log(services.data);
-    console.log(props);
-  };
-
-  if (services.length !== 0) {
-    return <InstanceServicesTable services={services} />;
-  } else {
-    return <div />;
-  }
-
-  //   return (
-  //     <div>
-  //       <Button label="Console Log state" onClick={checkState} />
-  //       <div />
-  //     </div>
-  //   );
-
-  //   return (
-  //     <div>
-  //       {/* <Button label="Console Log state" onClick={getData} /> */}
-  //       />
-  //     </div>
-  //   );
-};
-
-export default InstanceServices;
-
-//   handleClick = () => {
-//     const { push, record, showNotification } = this.props;
-//     const updatedRecord = { ...record, is_approved: true };
-//     -fetch(`/comments/${record.id}`, { method: "PUT", body: updatedRecord }) +
-//       dataProvider(UPDATE, "comments", { id: record.id, data: updatedRecord })
-//         .then(() => {
-//           showNotification("Comment approved");
-//           push("/comments");
-//         })
-//         .catch(e => {
-//           showNotification("Error: comment not approved", "warning");
-//         });
-//   };
+export const InstanceserviceCreate = props => <ServicesGetData />;

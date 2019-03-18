@@ -11,8 +11,6 @@ const styles = {
 };
 
 const AddServerDetails = ({ classes, record }) => {
-  const test = record ? true : false;
-  console.log(test);
   return (
     <Button
       className={classes.button}

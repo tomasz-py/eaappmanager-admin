@@ -20,7 +20,7 @@ import {
   SimpleShowLayout,
   FormTab
 } from "react-admin";
-import InstanceServices from "./InstanceServices/InstanceServices";
+import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";
 
 export const InstancesList = props => (
   <List {...props}>
@@ -70,37 +70,6 @@ export const InstancesCreate = props => (
   </Create>
 );
 
-// export const InstancesShow = props => (
-//   <Show {...props}>
-//     <TabbedForm>
-//       <FormTab label="Instance">
-//         <SimpleShowLayout>
-//           <ReferenceField source="clientId" reference="clients">
-//             <TextField source="name" />
-//           </ReferenceField>
-//           <TextField source="name" />
-//           <TextField source="description" />
-//           <DateField source="expirationDate" />
-
-//           <ReferenceField source="statusId" reference="statuses">
-//             <TextField source="name" />
-//           </ReferenceField>
-//         </SimpleShowLayout>
-//       </FormTab>
-//       <FormTab label="Services" path="instanceservices">
-//         <ReferenceField
-//           source="id"
-//           target="instanceId"
-//           reference="instanceservices"
-//           label="Test"
-//         >
-//           <TextField source="serviceId" />
-//         </ReferenceField>
-//       </FormTab>
-//     </TabbedForm>
-//   </Show>
-// );
-
 export const InstancesShow = props => {
   return (
     <Show {...props}>
@@ -120,7 +89,7 @@ export const InstancesShow = props => {
           </SimpleShowLayout>
         </FormTab>
         <FormTab label="Services" path="instanceservices">
-          <InstanceServices {...props} />
+          <InstanceServicesGetData {...props} />
         </FormTab>
       </TabbedForm>
     </Show>
