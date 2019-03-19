@@ -14,7 +14,9 @@ import {
   ReferenceManyField,
   Show,
   ShowButton,
-  ReferenceField
+  ReferenceField,
+  ReferenceInput,
+  SelectInput
 } from "react-admin";
 import AddServerDetails from "./ServersDetails/AddSD";
 import EditServerDetails from "./ServersDetails/EditSD.js";
@@ -27,6 +29,14 @@ export const ServersList = props => (
       <TextField source="host" />
       <TextField source="ip" />
       <TextField source="description" />
+      <ReferenceField
+        label="Status"
+        source="statusId"
+        reference="statuses"
+        linkType={false}
+      >
+        <TextField source="name" />
+      </ReferenceField>
       <ShowButton />
       <EditButton />
     </Datagrid>
@@ -44,6 +54,10 @@ export const ServersCreate = props => (
       <TextInput source="host" resettable />
       <TextInput source="ip" resettable />
       <LongTextInput source="description" resettable />
+      <TextInput source="ip" resettable />
+      <ReferenceInput label="Status" source="statusId" reference="statuses">
+        <SelectInput optionText="name" />
+      </ReferenceInput>
     </SimpleForm>
   </Create>
 );
@@ -57,6 +71,9 @@ export const ServersEdit = props => {
           <TextInput source="host" resettable />
           <TextInput source="ip" resettable />
           <LongTextInput source="description" resettable />
+          <ReferenceInput label="Status" source="statusId" reference="statuses">
+            <SelectInput optionText="name" />
+          </ReferenceInput>
         </FormTab>
         <FormTab label="Details" path="serversdetails">
           <ReferenceManyField
@@ -109,10 +126,10 @@ export const ServersShow = props => {
     <Show {...props}>
       <TabbedForm>
         <FormTab label="Server">
-          <TextField source="name" resettable />
-          <TextField source="host" resettable />
-          <TextField source="ip" resettable />
-          <TextField source="description" resettable />
+          <TextField source="name" />
+          <TextField source="host" />
+          <TextField source="ip" />
+          <TextField source="description" />
         </FormTab>
         <FormTab label="Details" path="serversdetails">
           <ReferenceManyField

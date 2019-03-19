@@ -5,6 +5,7 @@ import UserIcon from "@material-ui/icons/Group";
 import FolderSharedIcon from "@material-ui/icons/FolderShared";
 import StorageIcon from "@material-ui/icons/Storage";
 import SettingsIcon from "@material-ui/icons/Settings";
+import DvrIcon from "@material-ui/icons/Dvr";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import loopbackClient, { authProvider } from "react-admin-loopback";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
@@ -130,6 +131,7 @@ const App = () => (
       create={InstancesCreate}
       edit={InstancesEdit}
       show={InstancesShow}
+      icon={DvrIcon}
     />
     <Resource
       name="instanceservices"
