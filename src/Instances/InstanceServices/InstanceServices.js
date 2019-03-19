@@ -1,17 +1,6 @@
 import React from "react";
-import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
-  Create,
-  SimpleForm,
-  ReferenceInput,
-  SelectInput,
-  TextInput
-} from "react-admin";
+import { List, Datagrid, TextField, ReferenceField } from "react-admin";
 import ServicesGetData from "./ServicesGetData";
-import { Link } from "react-router-dom";
 
 export const InstanceserviceList = props => (
   <List {...props}>

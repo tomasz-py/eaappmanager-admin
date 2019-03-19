@@ -18,7 +18,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
 import AssignButton from "./AssignButton";
-import { Link } from "react-router-dom";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -320,8 +319,9 @@ class EnhancedTable extends React.Component {
                     <TableCell align="right">{n.status.name}</TableCell>
                     <TableCell align="right">
                       <AssignButton
-                        search={this.props.search}
+                        instanceId={this.props.instanceId}
                         serviceId={n.id}
+                        assignedServices={this.props.assignedServices}
                       />
                     </TableCell>
                   </TableRow>

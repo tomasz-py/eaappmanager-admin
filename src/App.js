@@ -133,7 +133,7 @@ const App = () => (
     />
     <Resource
       name="instanceservices"
-      list={InstanceserviceList}
+      //list={InstanceserviceList}
       create={InstanceserviceCreate}
     />
   </Admin>

@@ -16,7 +16,7 @@ const AssignServiceButton = ({ classes, id }) => (
     component={Link}
     to={`/instanceservices/create?instanceId=${id}`}
     title="Assign service"
-    label="Assign service"
+    label="Assign/Unassign service"
   >
     <Add />
   </Button>
