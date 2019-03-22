@@ -27,11 +27,17 @@ export const ServicesList = props => (
         label="Service type"
         source="serviceTypeId"
         reference="servicetypes"
+        linkType={false}
       >
         <TextField source="name" />
       </ReferenceField>
 
-      <ReferenceField label="Status" source="statusId" reference="statuses">
+      <ReferenceField
+        label="Status"
+        source="statusId"
+        reference="statuses"
+        linkType={false}
+      >
         <TextField source="name" />
       </ReferenceField>
       <TextField source="port" />
