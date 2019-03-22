@@ -17,5 +17,6 @@ export const InstanceserviceList = props => (
 );
 
 export const InstanceserviceCreate = props => {
+  console.log(props.location.search);
   return <ServicesGetData search={props.location.search} />;
 };

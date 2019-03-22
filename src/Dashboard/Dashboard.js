@@ -5,8 +5,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import DBServers from "./Content/DBServers";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
-import { SignalWifi1BarLock } from "@material-ui/icons";
 
 const styles = {
   card: {

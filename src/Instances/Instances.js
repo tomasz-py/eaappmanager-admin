@@ -41,17 +41,24 @@ export const InstancesList = props => (
 
 export const InstancesEdit = props => (
   <Edit {...props}>
-    <SimpleForm>
-      <ReferenceInput source="clientId" reference="clients">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
-      <TextInput source="name" />
-      <LongTextInput source="description" />
-      <DateInput source="expirationDate" />
-      <ReferenceInput source="statusId" reference="statuses">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
-    </SimpleForm>
+    <TabbedForm>
+      <FormTab label="Instance">
+        <ReferenceInput source="clientId" reference="clients">
+          <SelectInput optionText="name" />
+        </ReferenceInput>
+        <TextInput source="name" />
+        <LongTextInput source="description" />
+        <DateInput source="expirationDate" />
+        <ReferenceInput source="statusId" reference="statuses">
+          <SelectInput optionText="name" />
+        </ReferenceInput>
+      </FormTab>
+      <FormTab label="Services" path="instanceservices">
+        {console.log(props)}
+        <InstanceServicesGetData {...props} />
+        <AssignServiceButton {...props} />
+      </FormTab>
+    </TabbedForm>
   </Edit>
 );
 
@@ -84,12 +91,17 @@ export const InstancesShow = props => {
             <TextField source="description" />
             <DateField source="expirationDate" />
 
-            <ReferenceField source="statusId" reference="statuses">
+            <ReferenceField
+              source="statusId"
+              reference="statuses"
+              linkType={false}
+            >
               <TextField source="name" />
             </ReferenceField>
           </SimpleShowLayout>
         </FormTab>
         <FormTab label="Services" path="instanceservices">
+          {console.log(props)}
           <InstanceServicesGetData {...props} />
           <AssignServiceButton {...props} />
         </FormTab>

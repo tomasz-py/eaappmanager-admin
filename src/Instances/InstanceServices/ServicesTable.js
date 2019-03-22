@@ -218,7 +218,7 @@ class EnhancedTable extends React.Component {
     order: "asc",
     orderBy: "serviceTypeId",
     selected: [],
-    data: this.props.services.data,
+    data: this.props.services,
     page: 0,
     rowsPerPage: 5
   };

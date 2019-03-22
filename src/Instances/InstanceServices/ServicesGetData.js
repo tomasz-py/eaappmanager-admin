@@ -16,22 +16,6 @@ const ServicesGetData = props => {
   }, []);
 
   const getData = () => {
-    //Get list of all services
-    dataProvider(GET_LIST, "services", {
-      filter: {},
-      sort: { field: "id", order: "DESC" },
-      pagination: { page: 1, perPage: 10 },
-      include: [
-        { relation: "server" },
-        { relation: "servicetype" },
-        { relation: "status" }
-      ]
-    })
-      .then(response => {
-        setServices(response);
-      })
-      .catch(e => console.log(e));
-
     //Get id's of already assigned services to provided instanceId
     dataProvider(GET_LIST, "instanceservices", {
       filter: { instanceId: instanceId },
@@ -41,10 +25,25 @@ const ServicesGetData = props => {
       .then(response => {
         setassignedServices(response.data);
       })
+      .then(
+        //Get list of all services
+        dataProvider(GET_LIST, "services", {
+          filter: {},
+          sort: { field: "id", order: "DESC" },
+          pagination: { page: 1, perPage: 10 },
+          include: [
+            { relation: "server" },
+            { relation: "servicetype" },
+            { relation: "status" }
+          ]
+        }).then(response => {
+          setServices(response.data);
+        })
+      )
       .catch(e => console.log(e));
   };
 
-  if (services.length !== 0 && assignedServices.length !== 0) {
+  if (services.length !== 0) {
     return (
       <ServicesTable
         services={services}
