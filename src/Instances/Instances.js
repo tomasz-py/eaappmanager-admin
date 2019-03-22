@@ -19,7 +19,6 @@ import {
   Show,
   SimpleShowLayout,
   FormTab,
-  NumberInput,
   DisabledInput
 } from "react-admin";
 import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";

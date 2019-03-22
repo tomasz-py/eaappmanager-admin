@@ -11,8 +11,10 @@ import {
   ReferenceInput,
   SelectInput,
   NumberInput,
-  ReferenceField
+  ReferenceField,
+  BooleanInput
 } from "react-admin";
+import ConditionalRestartButton from "./ConditionalRestartButton/ConditionalRestartButton";
 
 export const ServicesList = props => (
   <List {...props}>
@@ -42,6 +44,7 @@ export const ServicesList = props => (
       </ReferenceField>
       <TextField source="port" />
       <TextField source="description" />
+      <ConditionalRestartButton />
       <EditButton />
     </Datagrid>
   </List>
@@ -63,7 +66,7 @@ export const ServicesCreate = props => (
       </ReferenceInput>
       <TextInput source="description" resettable />
       <NumberInput source="port" />
-
+      <BooleanInput source="toRestart" />
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
       </ReferenceInput>
@@ -88,6 +91,7 @@ export const ServicesEdit = props => (
       <TextInput source="description" resettable />
       <NumberInput source="port" />
 
+      <BooleanInput source="toRestart" />
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
       </ReferenceInput>
