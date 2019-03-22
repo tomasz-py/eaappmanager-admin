@@ -18,7 +18,9 @@ import {
   ShowButton,
   Show,
   SimpleShowLayout,
-  FormTab
+  FormTab,
+  NumberInput,
+  DisabledInput
 } from "react-admin";
 import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";
 import AssignServiceButton from "./InstanceServices/AssignServiceButton";
@@ -54,7 +56,6 @@ export const InstancesEdit = props => (
         </ReferenceInput>
       </FormTab>
       <FormTab label="Services" path="instanceservices">
-        {console.log(props)}
         <InstanceServicesGetData {...props} />
         <AssignServiceButton {...props} />
       </FormTab>
@@ -71,9 +72,12 @@ export const InstancesCreate = props => (
       <TextInput source="name" />
       <LongTextInput source="description" />
       <DateInput source="expirationDate" />
-      <ReferenceInput source="statusId" reference="statuses">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
+      <DisabledInput
+        label="Status: New"
+        source="statusId"
+        defaultValue="3" // status 3 = new
+        type="hidden"
+      />
     </SimpleForm>
   </Create>
 );
@@ -101,7 +105,6 @@ export const InstancesShow = props => {
           </SimpleShowLayout>
         </FormTab>
         <FormTab label="Services" path="instanceservices">
-          {console.log(props)}
           <InstanceServicesGetData {...props} />
           <AssignServiceButton {...props} />
         </FormTab>
