@@ -50,6 +50,7 @@ import {
   //InstanceserviceList,
   InstanceserviceCreate
 } from "./Instances/InstanceServices/InstanceServices";
+import { QueueList } from "./Queues/Queues";
 
 export const dataProvider = loopbackClient("http://localhost:3000/api/");
 
@@ -138,6 +139,7 @@ const App = () => (
       //list={InstanceserviceList}
       create={InstanceserviceCreate}
     />
+    <Resource name="queues" list={QueueList} />
   </Admin>
 );
 
