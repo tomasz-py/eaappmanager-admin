@@ -31,6 +31,7 @@ const InstanceServicesGetData = props => {
       ]
     })
       .then(response => {
+        console.log(response);
         setServices(response);
       })
       .catch(e => console.log(e));

@@ -15,8 +15,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
+import ConditionalRestartButton from "../../Services/ConditionalRestartButton/ConditionalRestartButton";
+import { RefreshButton } from "react-admin";
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -59,7 +60,8 @@ const rows = [
     disablePadding: false,
     label: "Description"
   },
-  { id: "statusId", numeric: false, disablePadding: false, label: "Status" }
+  { id: "statusId", numeric: false, disablePadding: false, label: "Status" },
+  { id: "Restart", numeric: false, disablePadding: false, label: "Restart" }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -180,11 +182,7 @@ let EnhancedTableToolbar = props => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
+          <RefreshButton />
         )}
       </div>
     </Toolbar>
@@ -315,12 +313,15 @@ class EnhancedTable extends React.Component {
                     <TableCell align="right">{n.port}</TableCell>
                     <TableCell align="right">{n.description}</TableCell>
                     <TableCell align="right">{n.status.name}</TableCell>
+                    <TableCell align="right">
+                      <ConditionalRestartButton record={n} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
             {emptyRows > 0 && (
               <TableRow style={{ height: 49 * emptyRows }}>
-                <TableCell colSpan={6} />
+                <TableCell colSpan={7} />
               </TableRow>
             )}
           </TableBody>
