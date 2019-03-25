@@ -54,7 +54,6 @@ export const ServersCreate = props => (
       <TextInput source="host" resettable />
       <TextInput source="ip" resettable />
       <LongTextInput source="description" resettable />
-      <TextInput source="ip" resettable />
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
       </ReferenceInput>

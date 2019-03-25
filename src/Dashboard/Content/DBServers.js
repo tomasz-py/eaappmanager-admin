@@ -27,8 +27,16 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-    backgroundColor: "#d3d3d3"
+    fontWeight: theme.typography.fontWeightRegular
+  },
+  column: {
+    flexBasis: "20%"
+  },
+  online: {
+    backgroundColor: "#00ff00"
+  },
+  nononline: {
+    backgroundColor: "#ff0000"
   }
 });
 
@@ -74,25 +82,37 @@ const DBServers = props => {
     <Paper className={classes.root}>
       {servers.map(server => (
         <ExpansionPanel key={server.id}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>
-              {"Name: " +
-                server.name +
-                " || Host: " +
-                server.host +
-                " || IP: " +
-                server.ip +
-                " || Status: " +
-                server.status.name}
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            className={
+              server.status.name === "Online"
+                ? classes.online
+                : classes.nononline
+            }
+          >
+            <Typography className={classes.column}>
+              {"Name: " + server.name}
+            </Typography>
+            <Typography className={classes.column}>
+              {"Host: " + server.host}
+            </Typography>
+            <Typography className={classes.column}>
+              {"IP: " + server.ip}
+            </Typography>
+            <Typography className={classes.column}>
+              {"Services: " + server.service.length}
+            </Typography>
+            <Typography className={classes.column}>
+              {"Status: " + server.status.name}
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="right">Host</TableCell>
-                  <TableCell align="right">IP</TableCell>
+                  <TableCell>Type</TableCell>
+                  <TableCell align="right">Port</TableCell>
+                  <TableCell align="right">Descritpion</TableCell>
                   <TableCell align="right">Status</TableCell>
                 </TableRow>
               </TableHead>
