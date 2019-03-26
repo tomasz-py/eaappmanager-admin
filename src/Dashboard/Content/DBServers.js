@@ -82,14 +82,7 @@ const DBServers = props => {
     <Paper className={classes.root}>
       {servers.map(server => (
         <ExpansionPanel key={server.id}>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            className={
-              server.status.name === "Online"
-                ? classes.online
-                : classes.nononline
-            }
-          >
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.column}>
               {"Name: " + server.name}
             </Typography>
@@ -102,7 +95,13 @@ const DBServers = props => {
             <Typography className={classes.column}>
               {"Services: " + server.service.length}
             </Typography>
-            <Typography className={classes.column}>
+            <Typography
+              className={
+                server.status.name === "Online"
+                  ? classes.online
+                  : classes.nononline
+              }
+            >
               {"Status: " + server.status.name}
             </Typography>
           </ExpansionPanelSummary>
