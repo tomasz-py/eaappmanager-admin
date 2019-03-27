@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, RefreshButton } from "react-admin";
+import { Button } from "react-admin";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { dataProvider } from "../../App";
 import { CREATE, UPDATE } from "react-admin";

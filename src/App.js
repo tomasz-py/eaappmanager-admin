@@ -7,7 +7,8 @@ import StorageIcon from "@material-ui/icons/Storage";
 import SettingsIcon from "@material-ui/icons/Settings";
 import DvrIcon from "@material-ui/icons/Dvr";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import loopbackClient, { authProvider } from "react-admin-loopback";
+import loopbackClient from "react-admin-loopback";
+import { authProvider } from "./authProvider/authProvider";
 import { UsersList, UsersCreate, UsersEdit } from "./Users/Users";
 import { ClientsList, ClientsCreate, ClientsEdit } from "./Clients/Clients";
 import { AddressesCreate, AddressesEdit } from "./Addresses/Addresses";
@@ -60,86 +61,90 @@ const App = () => (
     dataProvider={dataProvider}
     authProvider={authProvider("http://localhost:3000/api/appusers/login")}
   >
-    <Resource
-      name="appusers"
-      list={UsersList}
-      icon={UserIcon}
-      create={UsersCreate}
-      edit={UsersEdit}
-      options={{ label: "Users" }}
-    />
-    <Resource
-      name="clients"
-      list={ClientsList}
-      create={ClientsCreate}
-      edit={ClientsEdit}
-      icon={FolderSharedIcon}
-      options={{ label: "Clients" }}
-    />
-    <Resource
-      name="addresses"
-      // list={AddressesList}
-      create={AddressesCreate}
-      edit={AddressesEdit}
-    />
-    <Resource
-      name="subscriptions"
-      // list={SubscriptionsList}
-      create={SubscriptionsCreate}
-      edit={SubscriptionsEdit}
-    />
-    <Resource
-      name="servers"
-      list={ServersList}
-      create={ServersCreate}
-      edit={ServersEdit}
-      show={ServersShow}
-      icon={StorageIcon}
-      options={{ label: "Servers" }}
-    />
-    <Resource
-      name="services"
-      list={ServicesList}
-      create={ServicesCreate}
-      edit={ServicesEdit}
-      icon={SettingsIcon}
-    />
-    <Resource
-      name="servicetypes"
-      list={ServiceTypesList}
-      create={ServiceTypesCreate}
-      edit={ServiceTypesEdit}
-      icon={FormatListBulletedIcon}
-      options={{ label: "Services dictionary" }}
-    />
-    <Resource
-      name="serversdetails"
-      //list={ServersDetailsList}
-      create={ServersDetailsCreate}
-      edit={ServersDetailsEdit}
-    />
-    <Resource
-      name="statuses"
-      list={StatusesList}
-      create={StatusesCreate}
-      edit={StatusesEdit}
-      icon={FormatListBulletedIcon}
-      options={{ label: "Statuses dictionary" }}
-    />
-    <Resource
-      name="instances"
-      list={InstancesList}
-      create={InstancesCreate}
-      edit={InstancesEdit}
-      show={InstancesShow}
-      icon={DvrIcon}
-    />
-    <Resource
-      name="instanceservices"
-      //list={InstanceserviceList}
-      create={InstanceserviceCreate}
-    />
-    <Resource name="queues" list={QueueList} />
+    {permissions => [
+      permissions === "admin" ? (
+        <Resource
+          name="appusers"
+          list={UsersList}
+          icon={UserIcon}
+          create={UsersCreate}
+          edit={UsersEdit}
+          options={{ label: "Users" }}
+        />
+      ) : null,
+      <Resource
+        name="clients"
+        list={ClientsList}
+        create={ClientsCreate}
+        edit={ClientsEdit}
+        icon={FolderSharedIcon}
+        options={{ label: "Clients" }}
+      />,
+      <Resource
+        name="addresses"
+        // list={AddressesList}
+        create={AddressesCreate}
+        edit={AddressesEdit}
+      />,
+      <Resource
+        name="subscriptions"
+        // list={SubscriptionsList}
+        create={SubscriptionsCreate}
+        edit={SubscriptionsEdit}
+      />,
+      <Resource
+        name="servers"
+        list={ServersList}
+        create={ServersCreate}
+        edit={ServersEdit}
+        show={ServersShow}
+        icon={StorageIcon}
+        options={{ label: "Servers" }}
+      />,
+      <Resource
+        name="services"
+        list={ServicesList}
+        create={ServicesCreate}
+        edit={ServicesEdit}
+        icon={SettingsIcon}
+      />,
+      <Resource
+        name="servicetypes"
+        list={ServiceTypesList}
+        create={ServiceTypesCreate}
+        edit={ServiceTypesEdit}
+        icon={FormatListBulletedIcon}
+        options={{ label: "Services dictionary" }}
+      />,
+      <Resource
+        name="serversdetails"
+        //list={ServersDetailsList}
+        create={ServersDetailsCreate}
+        edit={ServersDetailsEdit}
+      />,
+      <Resource
+        name="statuses"
+        list={StatusesList}
+        create={StatusesCreate}
+        edit={StatusesEdit}
+        icon={FormatListBulletedIcon}
+        options={{ label: "Statuses dictionary" }}
+      />,
+      <Resource
+        name="instances"
+        list={InstancesList}
+        create={InstancesCreate}
+        edit={InstancesEdit}
+        show={InstancesShow}
+        icon={DvrIcon}
+      />,
+      <Resource
+        name="instanceservices"
+        //list={InstanceserviceList}
+        create={InstanceserviceCreate}
+      />,
+      <Resource name="queues" list={QueueList} />
+    ]}
   </Admin>
 );
 
