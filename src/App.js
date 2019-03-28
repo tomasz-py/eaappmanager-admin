@@ -64,6 +64,7 @@ const App = () => (
     {permissions => [
       permissions === "admin" ? (
         <Resource
+          key="appusers"
           name="appusers"
           list={UsersList}
           icon={UserIcon}
@@ -73,6 +74,7 @@ const App = () => (
         />
       ) : null,
       <Resource
+        key="clients"
         name="clients"
         list={ClientsList}
         create={ClientsCreate}
@@ -81,18 +83,21 @@ const App = () => (
         options={{ label: "Clients" }}
       />,
       <Resource
+        key="addresses"
         name="addresses"
         // list={AddressesList}
         create={AddressesCreate}
         edit={AddressesEdit}
       />,
       <Resource
+        key="subscriptions"
         name="subscriptions"
         // list={SubscriptionsList}
         create={SubscriptionsCreate}
         edit={SubscriptionsEdit}
       />,
       <Resource
+        key="servers"
         name="servers"
         list={ServersList}
         create={ServersCreate}
@@ -102,6 +107,7 @@ const App = () => (
         options={{ label: "Servers" }}
       />,
       <Resource
+        key="services"
         name="services"
         list={ServicesList}
         create={ServicesCreate}
@@ -109,6 +115,7 @@ const App = () => (
         icon={SettingsIcon}
       />,
       <Resource
+        key="servicetypes"
         name="servicetypes"
         list={ServiceTypesList}
         create={ServiceTypesCreate}
@@ -117,12 +124,14 @@ const App = () => (
         options={{ label: "Services dictionary" }}
       />,
       <Resource
+        key="serversdetails"
         name="serversdetails"
         //list={ServersDetailsList}
         create={ServersDetailsCreate}
         edit={ServersDetailsEdit}
       />,
       <Resource
+        key="statuses"
         name="statuses"
         list={StatusesList}
         create={StatusesCreate}
@@ -131,6 +140,7 @@ const App = () => (
         options={{ label: "Statuses dictionary" }}
       />,
       <Resource
+        key="instances"
         name="instances"
         list={InstancesList}
         create={InstancesCreate}
@@ -139,11 +149,12 @@ const App = () => (
         icon={DvrIcon}
       />,
       <Resource
+        key="instanceservices"
         name="instanceservices"
         //list={InstanceserviceList}
         create={InstanceserviceCreate}
       />,
-      <Resource name="queues" list={QueueList} />
+      <Resource key="12" name="queues" list={QueueList} />
     ]}
   </Admin>
 );

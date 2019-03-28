@@ -24,7 +24,6 @@ export const authProvider = (loginApiUrl, noAccessPage = "/login") => {
           return response.json();
         })
         .then(({ ttl, ...data }) => {
-          console.log(ttl);
           storage.save("lbtoken", data, ttl);
           return data;
         })
