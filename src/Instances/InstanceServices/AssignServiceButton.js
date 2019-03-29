@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-admin";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { Add } from "@material-ui/icons";
+import { Done } from "@material-ui/icons";
 
 const styles = {
   button: {
@@ -18,7 +18,7 @@ const AssignServiceButton = ({ classes, id }) => (
     title="Assign service"
     label="Assign/Unassign service"
   >
-    <Add />
+    <Done />
   </Button>
 );
 

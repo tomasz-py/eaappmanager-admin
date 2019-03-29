@@ -23,6 +23,7 @@ import {
 } from "react-admin";
 import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";
 import AssignServiceButton from "./InstanceServices/AssignServiceButton";
+import CreateServiceButton from "./InstanceServices/CreateServiceButton";
 
 export const InstancesList = props => (
   <List {...props}>
@@ -57,6 +58,7 @@ export const InstancesEdit = props => (
       <FormTab label="Services" path="instanceservices">
         <InstanceServicesGetData {...props} />
         <AssignServiceButton {...props} />
+        <CreateServiceButton {...props} />
       </FormTab>
     </TabbedForm>
   </Edit>
@@ -106,6 +108,7 @@ export const InstancesShow = props => {
         <FormTab label="Services" path="instanceservices">
           <InstanceServicesGetData {...props} />
           <AssignServiceButton {...props} />
+          <CreateServiceButton {...props} />
         </FormTab>
       </TabbedForm>
     </Show>

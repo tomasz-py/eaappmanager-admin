@@ -66,7 +66,7 @@ export const ServicesCreate = props => (
       </ReferenceInput>
       <TextInput source="description" resettable />
       <NumberInput source="port" />
-      <BooleanInput source="toRestart" />
+      <BooleanInput source="toRestart" defaultValue={false} />
       <ReferenceInput label="Status" source="statusId" reference="statuses">
         <SelectInput optionText="name" />
       </ReferenceInput>

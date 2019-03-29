@@ -220,7 +220,7 @@ class EnhancedTable extends React.Component {
     selected: [],
     data: this.props.services,
     page: 0,
-    rowsPerPage: 5
+    rowsPerPage: 10
   };
 
   handleRequestSort = (event, property) => {

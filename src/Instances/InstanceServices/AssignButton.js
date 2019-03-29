@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-admin";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { Add, Remove } from "@material-ui/icons";
+import { Done, Clear } from "@material-ui/icons";
 import { dataProvider } from "../../App";
 import { CREATE, DELETE } from "react-admin";
 
@@ -45,7 +45,7 @@ const AssignButton = ({ classes, instanceId, serviceId, assignedServices }) => {
         label="Unassign"
         onClick={onRemoveClickHandler}
       >
-        <Remove />
+        <Clear />
       </Button>
     );
   } else {
@@ -59,7 +59,7 @@ const AssignButton = ({ classes, instanceId, serviceId, assignedServices }) => {
         label="Assign"
         onClick={onAssignClickHandler}
       >
-        <Add />
+        <Done />
       </Button>
     );
   }
