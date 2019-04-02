@@ -1,8 +1,9 @@
-import { Button, Confirm } from "react-admin";
+import { Button, Confirm, UPDATE, CREATE, showNotification } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Stop } from "@material-ui/icons";
+import { dataProvider } from "../../App";
 
-const StopButton = props => {
+const StopButton = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -14,9 +15,30 @@ const StopButton = props => {
   };
 
   const handleConfirm = () => {
-    //TODO stop action
+    console.log(data.id);
 
-    setOpen(false);
+    dataProvider(CREATE, "queues", {
+      data: {
+        tableName: "Instance",
+        itemId: data.id,
+        statusId: 3,
+        action: "Stop"
+      }
+    })
+      .then(
+        dataProvider(UPDATE, "instances", {
+          id: data.id,
+          data: {
+            statusId: 4
+          }
+        })
+      )
+      .catch(e => console.log(e))
+      .finally(() => {
+        setOpen(false);
+
+        window.location.reload();
+      });
   };
 
   return (

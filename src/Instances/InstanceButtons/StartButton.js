@@ -15,8 +15,6 @@ const StartButton = ({ data }) => {
   };
 
   const handleConfirm = () => {
-    console.log(data.id);
-
     dataProvider(CREATE, "queues", {
       data: {
         tableName: "Instance",
