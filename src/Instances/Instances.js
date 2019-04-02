@@ -24,6 +24,7 @@ import {
 import InstanceServicesGetData from "./InstanceServices/InstanceServicesGetData";
 import AssignServiceButton from "./InstanceServices/AssignServiceButton";
 import CreateServiceButton from "./InstanceServices/CreateServiceButton";
+import InstanceActions from "./InstanceButtons";
 
 export const InstancesList = props => (
   <List {...props}>
@@ -85,7 +86,7 @@ export const InstancesCreate = props => (
 
 export const InstancesShow = props => {
   return (
-    <Show {...props}>
+    <Show {...props} actions={<InstanceActions />}>
       <TabbedForm>
         <FormTab label="Instance">
           <SimpleShowLayout>
