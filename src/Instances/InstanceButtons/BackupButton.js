@@ -1,6 +1,6 @@
 import { Button, Confirm } from "react-admin";
 import React, { useState, Fragment } from "react";
-import { Autorenew } from "@material-ui/icons";
+import { Backup } from "@material-ui/icons";
 
 const BackupButton = props => {
   const [isOpen, setOpen] = useState(false);
@@ -22,7 +22,7 @@ const BackupButton = props => {
   return (
     <Fragment>
       <Button label="Backup" onClick={handleClick}>
-        <Autorenew />
+        <Backup />
       </Button>
 
       <Confirm
