@@ -1,8 +1,9 @@
-import { Button, Confirm } from "react-admin";
+import { Button, Confirm, UPDATE, CREATE } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { PlayArrow } from "@material-ui/icons";
+import { dataProvider } from "../../App";
 
-const StartButton = props => {
+const StartButton = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -14,9 +15,30 @@ const StartButton = props => {
   };
 
   const handleConfirm = () => {
-    //TODO start action
+    console.log(data.id);
 
-    setOpen(false);
+    dataProvider(CREATE, "queues", {
+      data: {
+        tableName: "Instance",
+        itemId: data.id,
+        statusId: 3,
+        action: "Start"
+      }
+    })
+      .then(
+        dataProvider(UPDATE, "instances", {
+          id: data.id,
+          data: {
+            statusId: 4
+          }
+        })
+      )
+      .catch(e => console.log(e))
+      .finally(() => {
+        setOpen(false);
+
+        window.location.reload();
+      });
   };
 
   return (
