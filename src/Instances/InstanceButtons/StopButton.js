@@ -43,9 +43,16 @@ const StopButton = ({ data }) => {
 
   return (
     <Fragment>
-      <Button label="Stop" onClick={handleClick}>
-        <Stop />
-      </Button>
+      {/* ability to stop instance only when status is online*/}
+      {data.statusId === 1 ? (
+        <Button label="Stop" onClick={handleClick}>
+          <Stop />
+        </Button>
+      ) : (
+        <Button label="Stop" onClick={handleClick} disabled>
+          <Stop />
+        </Button>
+      )}
 
       <Confirm
         isOpen={isOpen}
