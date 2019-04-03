@@ -41,9 +41,16 @@ const StartButton = ({ data }) => {
 
   return (
     <Fragment>
-      <Button label="Start" onClick={handleClick}>
-        <PlayArrow />
-      </Button>
+      {/* ability to start instance only when status is offline/new/error*/}
+      {data.statusId === 2 || data.statusId === 3 || data.statusId === 6 ? (
+        <Button label="Start" onClick={handleClick}>
+          <PlayArrow />
+        </Button>
+      ) : (
+        <Button label="Start" onClick={handleClick} disabled>
+          <PlayArrow />
+        </Button>
+      )}
 
       <Confirm
         isOpen={isOpen}
