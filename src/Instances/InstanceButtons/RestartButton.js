@@ -1,8 +1,9 @@
-import { Button, Confirm } from "react-admin";
+import { Button, Confirm, GET_ONE } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Autorenew } from "@material-ui/icons";
+import { dataProvider } from "../../App";
 
-const RestartButton = props => {
+const RestartButton = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -14,7 +15,14 @@ const RestartButton = props => {
   };
 
   const handleConfirm = () => {
-    //TODO restart action
+    dataProvider(GET_ONE, "instances/services-torestart", {
+      id: data.id
+    })
+      .then(({ data }) => console.log(data.instance[0].service))
+      .catch(e => console.log(e))
+      .finally(() => {
+        console.log("finally");
+      });
 
     setOpen(false);
   };

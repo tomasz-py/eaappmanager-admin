@@ -1,4 +1,4 @@
-import { Button, Confirm, UPDATE, CREATE, showNotification } from "react-admin";
+import { Button, Confirm, UPDATE, CREATE } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Stop } from "@material-ui/icons";
 import { dataProvider } from "../../App";
