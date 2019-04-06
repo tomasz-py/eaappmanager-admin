@@ -1,10 +1,12 @@
-import { Button, Confirm, GET_ONE } from "react-admin";
+import { Button, Confirm, GET_ONE, CREATE, UPDATE } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Autorenew } from "@material-ui/icons";
 import { dataProvider } from "../../App";
 
 const RestartButton = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
+
+  const serviceIds = [];
 
   const handleClick = () => {
     setOpen(true);
@@ -18,10 +20,34 @@ const RestartButton = ({ data }) => {
     dataProvider(GET_ONE, "instances/services-torestart", {
       id: data.id
     })
-      .then(({ data }) => console.log(data.instance[0].service))
+      .then(({ data }) => {
+        let services = data.instance[0].service;
+        services.map(service => {
+          dataProvider(CREATE, "queues", {
+            data: {
+              tableName: "service",
+              itemId: service.id,
+              statusId: 3,
+              action: "Restart"
+            }
+          })
+            .then(
+              dataProvider(UPDATE, "services", {
+                id: service.id,
+                data: {
+                  statusId: 5
+                }
+              })
+            )
+
+            .catch(e => console.log(e));
+        });
+        return serviceIds;
+      })
+
       .catch(e => console.log(e))
       .finally(() => {
-        console.log("finally");
+        window.location.reload();
       });
 
     setOpen(false);
