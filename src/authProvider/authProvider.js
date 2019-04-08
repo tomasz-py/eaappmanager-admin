@@ -28,10 +28,10 @@ export const authProvider = (loginApiUrl, noAccessPage = "/login") => {
           return data;
         })
         .then(response => {
+          //cut login from loginApiUrl
+          const roleUrl = loginApiUrl.slice(0, -5);
           const permRequest = new Request(
-            `http://localhost:3000/api/appusers/${
-              response.userId
-            }/permission?access_token=${response.id}`,
+            `${roleUrl}${response.userId}/roles?access_token=${response.id}`,
             {
               method: "GET",
               headers: new Headers({ "Content-Type": "application/json" })
@@ -43,7 +43,12 @@ export const authProvider = (loginApiUrl, noAccessPage = "/login") => {
             })
             .then(response => {
               let ttl = 1209600;
-              let role = response[0].name;
+              let role = "";
+              if (response.length > 0) {
+                role = response[0].name;
+              } else {
+                role = "user";
+              }
               storage.save("role", role, ttl);
             });
         });
