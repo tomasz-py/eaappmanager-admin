@@ -10,7 +10,7 @@ import {
 } from "react-admin";
 import ConditionalUserEditButton from "./ConditionalUserEditButton/ConditionalUserEditButton";
 
-export const UsersList = props => (
+export const AppUsersList = props => (
   <List {...props} title={<UsersTitle />}>
     <Datagrid>
       <TextField source="id" />
@@ -26,7 +26,7 @@ const UsersTitle = () => {
   return <span>Users</span>;
 };
 
-export const UsersCreate = props => (
+export const AppUsersCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="username" resettable />
@@ -37,7 +37,7 @@ export const UsersCreate = props => (
   </Create>
 );
 
-export const UsersEdit = props => (
+export const AppUsersEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="username" resettable />

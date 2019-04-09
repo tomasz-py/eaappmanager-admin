@@ -1,11 +1,15 @@
 import UserIcon from "@material-ui/icons/Group";
-import { UsersList, UsersCreate, UsersEdit } from "../Users/Users";
+import {
+  AppUsersList,
+  AppUsersCreate,
+  AppUsersEdit
+} from "../Appusers/Appusers";
 
 export default {
   key: "appusers",
-  list: UsersList,
+  list: AppUsersList,
   icon: UserIcon,
-  create: UsersCreate,
-  edit: UsersEdit,
+  create: AppUsersCreate,
+  edit: AppUsersEdit,
   options: { label: "Users" }
 };
