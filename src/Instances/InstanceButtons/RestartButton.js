@@ -49,6 +49,7 @@ const RestartButton = ({ data, refreshView }) => {
             )
 
             .catch(e => console.log(e));
+          return null;
         });
         return serviceIds;
       })

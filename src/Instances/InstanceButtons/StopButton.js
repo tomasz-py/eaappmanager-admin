@@ -1,9 +1,10 @@
-import { Button, Confirm, UPDATE, CREATE } from "react-admin";
+import { Button, Confirm, UPDATE, CREATE, refreshView } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Stop } from "@material-ui/icons";
 import { dataProvider } from "../../App";
+import { connect } from "react-redux";
 
-const StopButton = ({ data }) => {
+const StopButton = ({ data, refreshView }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -36,8 +37,7 @@ const StopButton = ({ data }) => {
       .catch(e => console.log(e))
       .finally(() => {
         setOpen(false);
-
-        window.location.reload();
+        refreshView();
       });
   };
 
@@ -65,4 +65,7 @@ const StopButton = ({ data }) => {
   );
 };
 
-export default StopButton;
+export default connect(
+  null,
+  { refreshView }
+)(StopButton);

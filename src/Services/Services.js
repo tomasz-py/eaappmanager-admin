@@ -12,14 +12,12 @@ import {
   SelectInput,
   NumberInput,
   ReferenceField,
-  BooleanInput,
-  refreshView
+  BooleanInput
 } from "react-admin";
-import { connect } from "react-redux";
+
 import ConditionalRestartButton from "./ConditionalRestartButton/ConditionalRestartButton";
 
 export const ServicesList = props => {
-  console.log(props);
   return (
     <List {...props}>
       <Datagrid>

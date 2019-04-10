@@ -1,9 +1,10 @@
-import { Button, Confirm, UPDATE, CREATE } from "react-admin";
+import { Button, Confirm, UPDATE, CREATE, refreshView } from "react-admin";
 import React, { useState, Fragment } from "react";
 import { PlayArrow } from "@material-ui/icons";
 import { dataProvider } from "../../App";
+import { connect } from "react-redux";
 
-const StartButton = ({ data }) => {
+const StartButton = ({ data, refreshView }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -34,8 +35,7 @@ const StartButton = ({ data }) => {
       .catch(e => console.log(e))
       .finally(() => {
         setOpen(false);
-
-        window.location.reload();
+        refreshView();
       });
   };
 
@@ -63,4 +63,7 @@ const StartButton = ({ data }) => {
   );
 };
 
-export default StartButton;
+export default connect(
+  null,
+  { refreshView }
+)(StartButton);
