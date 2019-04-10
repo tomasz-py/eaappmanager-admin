@@ -15,14 +15,23 @@ import statuses from "./Resources/Statuses";
 import instances from "./Resources/Instances";
 import instanceservices from "./Resources/InstanceServices";
 import queues from "./Resources/Queues";
+import config from "./config";
 
-export const dataProvider = loopbackClient("http://localhost:3000/api/");
+//export const dataProvider = loopbackClient("http://localhost:3000/api/");
+export const dataProvider = loopbackClient(
+  `${config.api.protocol}://${config.api.hostName}:${config.api.port}/api/`
+);
 
 const App = () => (
   <Admin
     dashboard={Dashboard}
     dataProvider={dataProvider}
-    authProvider={authProvider("http://localhost:3000/api/appusers/login")}
+    //authProvider={authProvider("http://localhost:3000/api/appusers/login")}
+    authProvider={authProvider(
+      `${config.api.protocol}://${config.api.hostName}:${
+        config.api.port
+      }/api/appusers/login`
+    )}
   >
     {permissions => [
       permissions === "admin" ? (
