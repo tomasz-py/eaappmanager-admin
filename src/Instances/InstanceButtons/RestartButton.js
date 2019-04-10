@@ -1,9 +1,17 @@
-import { Button, Confirm, GET_ONE, CREATE, UPDATE } from "react-admin";
+import {
+  Button,
+  Confirm,
+  GET_ONE,
+  CREATE,
+  UPDATE,
+  refreshView
+} from "react-admin";
 import React, { useState, Fragment } from "react";
 import { Autorenew } from "@material-ui/icons";
 import { dataProvider } from "../../App";
+import { connect } from "react-redux";
 
-const RestartButton = ({ data }) => {
+const RestartButton = ({ data, refreshView }) => {
   const [isOpen, setOpen] = useState(false);
 
   const serviceIds = [];
@@ -47,7 +55,7 @@ const RestartButton = ({ data }) => {
 
       .catch(e => console.log(e))
       .finally(() => {
-        window.location.reload();
+        refreshView();
       });
 
     setOpen(false);
@@ -70,4 +78,7 @@ const RestartButton = ({ data }) => {
   );
 };
 
-export default RestartButton;
+export default connect(
+  null,
+  { refreshView }
+)(RestartButton);
