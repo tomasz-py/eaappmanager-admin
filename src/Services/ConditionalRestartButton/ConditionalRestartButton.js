@@ -13,7 +13,6 @@ const ConditionalRestartButton = ({
   refreshView,
   ...rest
 }) => {
-  console.log(refreshView);
   const onClickHandler = () => {
     dataProvider(CREATE, "queues", {
       data: {
