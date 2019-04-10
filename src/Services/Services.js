@@ -12,43 +12,48 @@ import {
   SelectInput,
   NumberInput,
   ReferenceField,
-  BooleanInput
+  BooleanInput,
+  refreshView
 } from "react-admin";
+import { connect } from "react-redux";
 import ConditionalRestartButton from "./ConditionalRestartButton/ConditionalRestartButton";
 
-export const ServicesList = props => (
-  <List {...props}>
-    <Datagrid>
-      <ReferenceField label="Server" source="serverId" reference="servers">
-        <TextField source="name" />
-      </ReferenceField>
-      <ReferenceField label="IP" source="serverId" reference="servers">
-        <TextField source="ip" />
-      </ReferenceField>
-      <ReferenceField
-        label="Service type"
-        source="serviceTypeId"
-        reference="servicetypes"
-        linkType={false}
-      >
-        <TextField source="name" />
-      </ReferenceField>
+export const ServicesList = props => {
+  console.log(props);
+  return (
+    <List {...props}>
+      <Datagrid>
+        <ReferenceField label="Server" source="serverId" reference="servers">
+          <TextField source="name" />
+        </ReferenceField>
+        <ReferenceField label="IP" source="serverId" reference="servers">
+          <TextField source="ip" />
+        </ReferenceField>
+        <ReferenceField
+          label="Service type"
+          source="serviceTypeId"
+          reference="servicetypes"
+          linkType={false}
+        >
+          <TextField source="name" />
+        </ReferenceField>
 
-      <ReferenceField
-        label="Status"
-        source="statusId"
-        reference="statuses"
-        linkType={false}
-      >
-        <TextField source="name" />
-      </ReferenceField>
-      <TextField source="port" />
-      <TextField source="description" />
-      <ConditionalRestartButton />
-      <EditButton />
-    </Datagrid>
-  </List>
-);
+        <ReferenceField
+          label="Status"
+          source="statusId"
+          reference="statuses"
+          linkType={false}
+        >
+          <TextField source="name" />
+        </ReferenceField>
+        <TextField source="port" />
+        <TextField source="description" />
+        <ConditionalRestartButton />
+        <EditButton />
+      </Datagrid>
+    </List>
+  );
+};
 
 export const ServicesCreate = props => (
   <Create {...props}>

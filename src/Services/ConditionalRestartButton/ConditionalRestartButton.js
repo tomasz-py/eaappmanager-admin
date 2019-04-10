@@ -1,12 +1,19 @@
 import React from "react";
-import { Button } from "react-admin";
+import { Button, refreshView } from "react-admin";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { dataProvider } from "../../App";
 import { CREATE, UPDATE } from "react-admin";
-// import { Link } from "react-router-dom";
-// import { push as pushAction } from "react-router-redux";
+import { connect } from "react-redux";
 
-const ConditionalRestartButton = ({ record, resource, ...rest }) => {
+const ConditionalRestartButton = ({
+  record,
+  resource,
+  push,
+  onClick,
+  refreshView,
+  ...rest
+}) => {
+  console.log(refreshView);
   const onClickHandler = () => {
     dataProvider(CREATE, "queues", {
       data: {
@@ -24,7 +31,7 @@ const ConditionalRestartButton = ({ record, resource, ...rest }) => {
           }
         })
       )
-      .then(() => window.location.reload())
+      .then(() => refreshView())
       .catch(e => console.log(e));
   };
 
@@ -34,10 +41,9 @@ const ConditionalRestartButton = ({ record, resource, ...rest }) => {
     </Button>
   ) : null;
 };
-export default ConditionalRestartButton;
 
-// <RefreshButton
-//   resource={resource}
-//   label="Restart"
-//   //onClick={onClickHandler}
-// />
+export default connect(
+  null,
+  { refreshView }
+)(ConditionalRestartButton);
+//export default ConditionalRestartButton;
