@@ -15,6 +15,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import UptimeCounter from "./UptimeCounter";
 
 const styles = theme => ({
   root: {
@@ -106,6 +107,7 @@ const DBServers = props => {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
+            <UptimeCounter uptime={server.startTime} />
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
