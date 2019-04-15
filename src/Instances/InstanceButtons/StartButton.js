@@ -16,19 +16,21 @@ const StartButton = ({ data, refreshView }) => {
   };
 
   const handleConfirm = () => {
-    dataProvider(CREATE, "queues", {
+    //change instance status to inprogress
+    dataProvider(UPDATE, "instances", {
+      id: data.id,
       data: {
-        tableName: "Instance",
-        itemId: data.id,
-        statusId: 3,
-        action: "Start"
+        statusId: 4
       }
     })
+      //add to queue
       .then(
-        dataProvider(UPDATE, "instances", {
-          id: data.id,
+        dataProvider(CREATE, "queues", {
           data: {
-            statusId: 4
+            tableName: "Instance",
+            itemId: data.id,
+            statusId: 3,
+            action: "Start"
           }
         })
       )

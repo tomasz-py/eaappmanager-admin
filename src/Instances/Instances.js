@@ -36,6 +36,9 @@ export const InstancesList = props => (
       <TextField source="name" label="Instance name" />
       <TextField source="description" />
       <DateField source="expirationDate" />
+      <ReferenceField source="statusId" reference="statuses">
+        <TextField source="name" />
+      </ReferenceField>
       <ShowButton />
       <EditButton />
     </Datagrid>

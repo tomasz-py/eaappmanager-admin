@@ -16,21 +16,21 @@ const StopButton = ({ data, refreshView }) => {
   };
 
   const handleConfirm = () => {
-    console.log(data.id);
-
-    dataProvider(CREATE, "queues", {
+    //change status od instans to inprogress
+    dataProvider(UPDATE, "instances", {
+      id: data.id,
       data: {
-        tableName: "Instance",
-        itemId: data.id,
-        statusId: 3,
-        action: "Stop"
+        statusId: 4
       }
     })
+      //add to queue
       .then(
-        dataProvider(UPDATE, "instances", {
-          id: data.id,
+        dataProvider(CREATE, "queues", {
           data: {
-            statusId: 4
+            tableName: "Instance",
+            itemId: data.id,
+            statusId: 3,
+            action: "Stop"
           }
         })
       )
