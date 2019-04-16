@@ -21,6 +21,7 @@ export const ServicesList = props => {
   return (
     <List {...props}>
       <Datagrid>
+        <TextField source="id" />
         <ReferenceField label="Server" source="serverId" reference="servers">
           <TextField source="name" />
         </ReferenceField>
