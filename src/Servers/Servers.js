@@ -50,6 +50,8 @@ const ServerTitle = () => {
 export const ServersCreate = props => (
   <Create {...props}>
     <SimpleForm>
+      <TextInput source="username" resettable />
+      <TextInput source="password" type="password" resettable />
       <TextInput source="name" resettable />
       <TextInput source="host" resettable />
       <TextInput source="ip" resettable />
@@ -66,6 +68,8 @@ export const ServersEdit = props => {
     <Edit {...props}>
       <TabbedForm>
         <FormTab label="Server">
+          <TextInput source="username" resettable />
+          <TextInput source="password" type="password" resettable />
           <TextInput source="name" resettable />
           <TextInput source="host" resettable />
           <TextInput source="ip" resettable />
