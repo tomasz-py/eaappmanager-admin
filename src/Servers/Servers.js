@@ -21,7 +21,7 @@ import {
 import AddServerDetails from "./ServersDetails/AddSD";
 import EditServerDetails from "./ServersDetails/EditSD.js";
 
-export const ServersList = props => (
+export const ServersList = ({ permissions, ...props }) => (
   <List {...props} title={<ServerTitle />}>
     <Datagrid>
       <TextField source="id" />
@@ -38,7 +38,7 @@ export const ServersList = props => (
         <TextField source="name" />
       </ReferenceField>
       <ShowButton />
-      <EditButton />
+      {permissions === "admin" && <EditButton />}
     </Datagrid>
   </List>
 );

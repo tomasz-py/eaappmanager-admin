@@ -6,12 +6,20 @@ import {
   InstancesShow
 } from "../Instances/Instances";
 
-export default {
+export const adminInstances = {
   key: "instances",
   name: "instances",
   list: InstancesList,
   create: InstancesCreate,
   edit: InstancesEdit,
+  show: InstancesShow,
+  icon: DvrIcon
+};
+
+export const userInstances = {
+  key: "instances",
+  name: "instances",
+  list: InstancesList,
   show: InstancesShow,
   icon: DvrIcon
 };

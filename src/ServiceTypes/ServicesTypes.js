@@ -10,12 +10,12 @@ import {
   Edit
 } from "react-admin";
 
-export const ServiceTypesList = props => (
+export const ServiceTypesList = ({ permissions, ...props }) => (
   <List {...props} title={<ServiceTypesTitle />}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />
-      <EditButton />
+      {permissions === "admin" && <EditButton />}
     </Datagrid>
   </List>
 );

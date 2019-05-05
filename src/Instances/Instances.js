@@ -26,7 +26,7 @@ import AssignServiceButton from "./InstanceServices/AssignServiceButton";
 import CreateServiceButton from "./InstanceServices/CreateServiceButton";
 import InstanceActions from "./InstanceButtons";
 
-export const InstancesList = props => (
+export const InstancesList = ({ permissions, ...props }) => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
@@ -40,7 +40,7 @@ export const InstancesList = props => (
         <TextField source="name" />
       </ReferenceField>
       <ShowButton />
-      <EditButton />
+      {permissions === "admin" && <EditButton />}
     </Datagrid>
   </List>
 );

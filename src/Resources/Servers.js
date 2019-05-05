@@ -6,11 +6,19 @@ import {
   ServersShow
 } from "../Servers/Servers";
 
-export default {
+export const adminServers = {
   key: "servers",
   list: ServersList,
   create: ServersCreate,
   edit: ServersEdit,
+  show: ServersShow,
+  icon: StorageIcon,
+  options: { label: "Servers" }
+};
+
+export const userServers = {
+  key: "servers",
+  list: ServersList,
   show: ServersShow,
   icon: StorageIcon,
   options: { label: "Servers" }

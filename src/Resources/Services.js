@@ -5,10 +5,16 @@ import {
   ServicesCreate
 } from "../Services/Services";
 
-export default {
+export const adminServices = {
   key: "services",
   list: ServicesList,
   create: ServicesCreate,
   edit: ServicesEdit,
+  icon: SettingsIcon
+};
+
+export const userServices = {
+  key: "services",
+  list: ServicesList,
   icon: SettingsIcon
 };

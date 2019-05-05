@@ -17,7 +17,7 @@ import {
 
 import ConditionalRestartButton from "./ConditionalRestartButton/ConditionalRestartButton";
 
-export const ServicesList = props => {
+export const ServicesList = ({ permissions, ...props }) => {
   return (
     <List {...props}>
       <Datagrid>
@@ -48,7 +48,7 @@ export const ServicesList = props => {
         <TextField source="port" />
         <TextField source="description" />
         <ConditionalRestartButton />
-        <EditButton />
+        {permissions === "admin" && <EditButton />}
       </Datagrid>
     </List>
   );

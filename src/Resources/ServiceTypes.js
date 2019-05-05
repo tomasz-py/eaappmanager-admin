@@ -5,12 +5,18 @@ import {
   ServiceTypesEdit
 } from "../ServiceTypes/ServicesTypes";
 
-export default {
+export const adminServiceTypes = {
   key: "servicetypes",
-
   list: ServiceTypesList,
   create: ServiceTypesCreate,
   edit: ServiceTypesEdit,
+  icon: FormatListBulletedIcon,
+  options: { label: "Services dictionary" }
+};
+
+export const userServiceTypes = {
+  key: "servicetypes",
+  list: ServiceTypesList,
   icon: FormatListBulletedIcon,
   options: { label: "Services dictionary" }
 };
