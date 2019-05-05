@@ -2,7 +2,7 @@ import React from "react";
 import { List, Datagrid, TextField, ReferenceField } from "react-admin";
 
 export const QueueList = props => (
-  <List {...props}>
+  <List {...props} bulkActionButtons={false}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="tableName" />
