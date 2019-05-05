@@ -24,7 +24,7 @@ const ClientTitle = ({ record }) => {
 };
 //return <span>Post {record ? `"${record.title}"` : ""}</span>;
 export const ClientsList = props => (
-  <List {...props}>
+  <List {...props} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />

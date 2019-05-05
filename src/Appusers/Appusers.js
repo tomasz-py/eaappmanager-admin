@@ -11,7 +11,7 @@ import {
 import ConditionalUserEditButton from "./ConditionalUserEditButton/ConditionalUserEditButton";
 
 export const AppUsersList = props => (
-  <List {...props} title={<UsersTitle />}>
+  <List {...props} title={<UsersTitle />} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="username" />

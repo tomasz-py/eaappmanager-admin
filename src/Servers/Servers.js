@@ -22,7 +22,7 @@ import AddServerDetails from "./ServersDetails/AddSD";
 import EditServerDetails from "./ServersDetails/EditSD.js";
 
 export const ServersList = ({ permissions, ...props }) => (
-  <List {...props} title={<ServerTitle />}>
+  <List {...props} title={<ServerTitle />} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />

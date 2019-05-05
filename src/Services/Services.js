@@ -19,7 +19,7 @@ import ConditionalRestartButton from "./ConditionalRestartButton/ConditionalRest
 
 export const ServicesList = ({ permissions, ...props }) => {
   return (
-    <List {...props}>
+    <List {...props} bulkActionButtons={false}>
       <Datagrid>
         <TextField source="id" />
         <ReferenceField label="Server" source="serverId" reference="servers">

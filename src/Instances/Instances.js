@@ -27,7 +27,7 @@ import CreateServiceButton from "./InstanceServices/CreateServiceButton";
 import InstanceActions from "./InstanceButtons";
 
 export const InstancesList = ({ permissions, ...props }) => (
-  <List {...props}>
+  <List {...props} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <ReferenceField source="clientId" reference="clients">

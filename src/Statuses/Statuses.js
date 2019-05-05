@@ -11,7 +11,7 @@ import {
 } from "react-admin";
 
 export const StatusesList = ({ permissions, ...props }) => (
-  <List {...props}>
+  <List {...props} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />

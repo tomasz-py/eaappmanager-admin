@@ -11,7 +11,7 @@ import {
 } from "react-admin";
 
 export const ServiceTypesList = ({ permissions, ...props }) => (
-  <List {...props} title={<ServiceTypesTitle />}>
+  <List {...props} title={<ServiceTypesTitle />} bulkActionButtons={false}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />
